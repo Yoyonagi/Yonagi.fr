@@ -1,51 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Yonagi</title>
-
-    <!-- Favicon dans l'onglet du navigateur -->
-    <link rel="icon" type="image/webp" href="/logo/favicon.webp">
-
-    <!-- Icônes FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Feuille de style principale -->
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-    <!-- Barre latérale -->
-    <div id="sidebar"></div>
+    <!-- Chargement du head-meta commun (favicon, og tags, styles, etc) -->
     <script>
-        fetch("/components/sidebar.html")
+        fetch("/components/head-meta.html")
             .then(res => res.text())
-            .then(data => {
-                document.getElementById("sidebar").innerHTML = data;
-            });
+            .then(data => document.head.innerHTML += data);
     </script>
+    <title>Yonagi</title>
+</head>
 
+<body>
+    <!-- Préloader -->
     <div id="preloader"><p>Chargement des vibes...</p></div>
-    <div id="sidebar" class="sidebar" style="display: none;"></div>
+
+    <!-- Sidebar dynamique -->
+    <div id="sidebar" style="display: none;"></div>
+    <script src="/scripts/sidebar-loader.js"></script>
 
     <!-- Contenu principal -->
     <div class="container">
-        <!-- Image principale (peut être remplacée par une photo de toi si tu veux !) -->
-        <img src="logo/yonagi.webp" alt="Photo de Yonagi" class="logo" />
+        <img src="/logo/yonagi.webp" alt="Yonagi Logo" class="logo" />
 
-        <!-- Titre de bienvenue -->
         <h1>Bienvenue</h1>
         <p>
             Heyyy ! Je suis <strong>Yonagi</strong> ✨<br />
             J'adore la <strong>tech</strong>, les <strong>jeux vidéos</strong>, les <strong>animes</strong> et <strong>vive les trans</strong> 🏳️‍⚧️
         </p>
 
-        <!-- Lien vers le portfolio -->
         <a href="/portfolio/"><i class="fas fa-folder-open"></i> Voir mon portfolio</a>
 
-        <!-- Liens sociaux -->
         <p>Tu peux me retrouver ici :</p>
         <p>
             <a href="https://github.com/Yoyonagi" target="_blank">
@@ -58,7 +42,7 @@
                 <i class="fab fa-reddit fa-spin-smooth"></i> Reddit
             </a>
             <a href="https://www.youtube.com/@KC-Yonagi" target="_blank">
-                <i class="fab fa-youtube fa-spin-smooth"></i> Youtube
+                <i class="fab fa-youtube fa-spin-smooth"></i> YouTube
             </a>
             <a href="https://www.twitch.tv/yoyonagii" target="_blank">
                 <i class="fab fa-twitch fa-spin-smooth"></i> Twitch
@@ -67,16 +51,21 @@
                 <i class="fas fa-envelope fa-spin-smooth"></i> Me contacter
             </a>
         </p>
+
+        <!-- Vidéo YouTube en autoplay (muted) -->
         <div class="video-wrapper">
             <div class="iframe-container">
                 <iframe src="https://www.youtube.com/embed/zCaFkqQ6utQ?autoplay=1&mute=1&loop=1&playlist=zCaFkqQ6utQ"
                         title="Yonagi YouTube"
                         allow="autoplay; encrypted-media"
-                        allowfullscreen></iframe>
+                        allowfullscreen>
+                </iframe>
             </div>
         </div>
-
     </div>
-    <script src="/scripts/sidebar-loader.js"></script>
+
+    <!-- Footer dynamique -->
+    <div id="footer"></div>
+    <script src="/scripts/footer-loader.js"></script>
 </body>
 </html>

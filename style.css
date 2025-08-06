@@ -231,3 +231,24 @@ body {
         opacity: 0;
         pointer-events: none;
     }
+
+
+.footer {
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #1e1e2f;
+    color: #aaa;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #333;
+}
+
+    .footer a {
+        color: #ff6ec7;
+        text-decoration: none;
+        margin: 0 8px;
+    }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
