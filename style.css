@@ -259,3 +259,111 @@ body {
     border-top: 1px solid #333;
     margin-top: auto;
 }
+
+
+.viewer-container {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+model-viewer {
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #0008;
+}
+
+.viewer-title {
+  margin-top: 40px;
+  color: #ff6ec7;
+  text-align: center;
+}
+
+.back-link {
+  margin-top: 30px;
+  display: inline-block;
+  color: #ff6ec7;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Boutons pour changer de modèle */
+.model-switcher {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.model-switcher button {
+  background-color: #ff6ec7;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+    .model-switcher button:hover {
+        backgrou .viewer-container
+
+{
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+model-viewer {
+    width: 100%;
+    height: 600px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #0008;
+}
+
+.viewer-title {
+    margin-top: 40px;
+    color: #ff6ec7;
+    text-align: center;
+}
+
+.back-link {
+    margin-top: 30px;
+    display: inline-block;
+    color: #ff6ec7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+/* Boutons pour changer de modèle */
+.model-switcher {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+    .model-switcher button {
+        background-color: #ff6ec7;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+        .model-switcher button:hover {
+            background-color: #e25cae;
+        }
