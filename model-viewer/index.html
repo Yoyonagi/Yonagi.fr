@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visualiseur 3D - Yonagi</title>
+
+  <!-- Lien vers la feuille de style globale -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Script du composant model-viewer de Google -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+  <!-- Style spécifique à cette page -->
+  <style>
+    /* Conteneur principal pour le viewer */
+    .viewer-container {
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    /* Style du composant model-viewer */
+    model-viewer {
+      width: 100%;
+      height: 600px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #0008;
+    }
+
+    /* Titre principal */
+    .viewer-title {
+      margin-top: 40px;
+      color: #ff6ec7;
+      text-align: center;
+    }
+
+    /* Lien de retour */
+    .back-link {
+      margin-top: 30px;
+      display: inline-block;
+      color: #ff6ec7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Conteneur pour les boutons de changement de modèle */
+    .model-switcher {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .model-switcher button {
+      background-color: #ff6ec7;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .model-switcher button:hover {
+      background-color: #e25cae;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar de navigation -->
+  <div class="sidebar">
+    <img src="../logo/yonagi.webp" alt="Yonagi Logo" class="logo-sidebar">
+    <nav class="nav-links">
+      <a href="/">🏠 Accueil</a>
+      <a href="/portfolio/">📁 Portfolio</a>
+      <a href="/model-viewer/" aria-current="page">🌀 Visualiseur 3D</a>
+    </nav>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="container">
+    <h1 class="viewer-title">Visualisation 3D : Technivibe</h1>
+
+    <!-- Le viewer 3D -->
+    <div class="viewer-container">
+      <model-viewer
+        id="viewer"
+        alt="Modèle 3D Technivibe"
+        src="Technivibe.glb"
+        ar
+        auto-rotate
+        camera-controls
+        touch-action="pan-y"
+        shadow-intensity="1"
+        exposure="1"
+        poster=""
+      ></model-viewer>
+    </div>
+
+    <!-- Boutons pour changer de modèle -->
+    <div class="model-switcher">
+      <button onclick="loadModel('Technivibe.glb', 'Technivibe')">Technivibe</button>
+      <button onclick="loadModel('Injection.glb', 'Injection')">Injection</button>
+      <button onclick="loadModel('Moule-projet.glb', 'Moule')">Moule projet</button>
+      <button onclick="loadModel('Machine-a-cookies.glb', 'Cookies')">Machine à cookies</button>
+    </div>
+
+    <!-- Lien retour à l'accueil -->
+    <p style="text-align: center;">
+      <a class="back-link" href="/">⬅ Retour à l'accueil</a>
+    </p>
+  </div>
+
+  <!-- Script pour changer de modèle dynamiquement -->
+  <script>
+    function loadModel(file, title) {
+      const viewer = document.getElementById('viewer');
+      const heading = document.querySelector('.viewer-title');
+
+      viewer.setAttribute('src', file);
+      heading.textContent = `Visualisation 3D : ${title}`;
+    }
+  </script>
+</body>
+</html>

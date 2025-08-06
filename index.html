@@ -3,38 +3,61 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Yonagi</title>
+
+    <!-- Favicon dans l'onglet du navigateur -->
     <link rel="icon" type="image/webp" href="logo/favicon.webp">
+
+    <!-- Icônes FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Feuille de style principale -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+    <!-- Barre latérale -->
     <div class="sidebar">
         <img src="logo/yonagi.webp" alt="Yonagi Logo" class="logo-sidebar">
+
         <nav class="nav-links">
-            <a href="index.html" aria-current="page">🏠 Accueil</a>
-            <a href="portfolio.html">📁 Portfolio</a>
-            <a href="portfolio-files/model-viewer.html">🌀 Visualiseur 3D</a>
+            <!-- Les liens utilisent maintenant des dossiers, plus de `.html` -->
+            <a href="/" aria-current="page">🏠 Accueil</a>
+            <a href="/portfolio/">📁 Portfolio</a>
+            <a href="/model-viewer/">🌀 Visualiseur 3D</a>
         </nav>
     </div>
+
+    <!-- Contenu principal -->
     <div class="container">
+        <!-- Image principale (peut être remplacée par une photo de toi si tu veux !) -->
         <img src="logo/yonagi.webp" alt="Photo de Yonagi" class="logo" />
+
+        <!-- Titre de bienvenue -->
         <h1>Bienvenue</h1>
-        <p>Heyyy ! Je suis Yonagi, J'adore la tech, les jeux vidéos, les animes et de vibes transféminines 🏳️‍⚧️</p>
-        <a href="portfolio.html"><i class="fas fa-folder-open"></i> Portfolio</a>
+        <p>
+            Heyyy ! Je suis <strong>Yonagi</strong> ✨<br />
+            J'adore la <strong>tech</strong>, les <strong>jeux vidéos</strong>, les <strong>animes</strong> et les <strong>vibes transféminines</strong> 🏳️‍⚧️
+        </p>
+
+        <!-- Lien vers le portfolio -->
+        <a href="/portfolio/"><i class="fas fa-folder-open"></i> Voir mon portfolio</a>
+
+        <!-- Liens sociaux -->
         <p>Tu peux me retrouver ici :</p>
         <p>
             <a href="https://github.com/Yoyonagi" target="_blank">
-                <i class="fab fa-github fa-spin-smooth"></i> GitHub
+                <i class="fab fa-github"></i> GitHub
             </a>
             <a href="https://x.com/_Yonagi" target="_blank">
-                <i class="fab fa-twitter fa-spin-smooth"></i> Twitter
+                <i class="fab fa-twitter"></i> Twitter
             </a>
             <a href="https://www.reddit.com/user/Yonagi-Kei/" target="_blank">
-                <i class="fab fa-reddit fa-spin-smooth"></i> Reddit
+                <i class="fab fa-reddit"></i> Reddit
             </a>
             <a href="mailto:contact@yonagi.fr">
-                <i class="fas fa-envelope fa-spin-smooth"></i> Me contacter
+                <i class="fas fa-envelope"></i> Me contacter
             </a>
         </p>
     </div>
