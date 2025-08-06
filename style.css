@@ -252,3 +252,13 @@ body {
         .footer a:hover {
             text-decoration: underline;
         }
+
+#footer {
+    width: 100%;
+    padding: 20px;
+    background-color: #1e1e2f;
+    color: #aaa;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 60px;
+}
