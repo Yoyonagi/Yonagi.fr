@@ -293,11 +293,13 @@ html, body {
     width: 100%;
 }
 
+/* Décalage standard quand la sidebar est là */
 body.with-sidebar .container {
     margin-left: 60px;
     transition: margin-left 0.3s ease;
 }
 
-body.with-sidebar .sidebar:hover ~ .container {
+/* Si la sidebar est élargie */
+body.with-sidebar.sidebar-expanded .container {
     margin-left: 220px;
 }
