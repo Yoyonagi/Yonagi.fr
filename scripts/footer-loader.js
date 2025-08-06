@@ -5,7 +5,3 @@ fetch("/components/footer.html")
         footer.innerHTML = data;
         footer.style.display = "block";
     });
-window.addEventListener("load", () => {
-    document.body.classList.add("ready");
-    document.body.style.visibility = "visible";
-});
