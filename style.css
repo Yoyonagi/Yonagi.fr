@@ -236,32 +236,59 @@ body {
     }
 
 
+/* Étend le body pour occuper toute la hauteur de la fenêtre */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Le container prend tout l'espace dispo sauf le footer */
+.container {
+    flex: 1;
+    padding: 40px;
+    margin-left: 60px; /* ou 220px si sidebar étendue */
+    transition: margin-left 0.3s ease;
+}
+
+/* Le footer est collé en bas */
 .footer {
-    margin-top: 60px;
     padding: 20px;
     background-color: #1e1e2f;
     color: #aaa;
     text-align: center;
     font-size: 0.9em;
     border-top: 1px solid #333;
+    width: 100%;
 }
 
-    .footer a {
-        color: #ff6ec7;
-        text-decoration: none;
-        margin: 0 8px;
-    }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
+.container {
+    flex: 1;
+    margin-left: 60px;
+    padding: 40px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .container {
+    margin-left: 220px;
+}
 
 #footer {
-    width: 100%;
     padding: 20px;
     background-color: #1e1e2f;
     color: #aaa;
     text-align: center;
     font-size: 0.9em;
-    margin-top: 60px;
+    border-top: 1px solid #333;
+    width: 100%;
 }
