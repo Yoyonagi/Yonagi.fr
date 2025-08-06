@@ -14,3 +14,12 @@ fetch("/components/sidebar.html")
             }, 500);
         }
     });
+
+// Après que sidebar.innerHTML = data;
+const currentPath = window.location.pathname;
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    if (currentPath === new URL(link.href).pathname) {
+        link.setAttribute('aria-current', 'page');
+    }
+});
