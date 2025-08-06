@@ -217,3 +217,45 @@ i {
         .footer a:hover {
             text-decoration: underline;
         }
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+}
+
+/* Structure globale de la page */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container principal, prend toute la hauteur restante entre sidebar et footer */
+.container {
+    flex: 1;
+    margin-left: 60px;
+    padding: 40px;
+    text-align: center;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .container {
+    margin-left: 220px;
+}
+
+/* Footer toujours en bas */
+#footer {
+    width: 100%;
+    padding: 20px;
+    background-color: #1e1e2f;
+    color: #aaa;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #333;
+    margin-top: auto;
+}
