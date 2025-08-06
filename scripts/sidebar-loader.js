@@ -26,4 +26,11 @@ fetch("/components/sidebar.html")
                 preloader.remove();
             }, 500);
         }
+        // Ajout dynamique de la classe si hover
+        sidebar.addEventListener("mouseenter", () => {
+            document.body.classList.add("sidebar-expanded");
+        });
+        sidebar.addEventListener("mouseleave", () => {
+            document.body.classList.remove("sidebar-expanded");
+        });
     });
