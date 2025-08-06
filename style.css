@@ -327,3 +327,11 @@ body {
     padding: 40px;
     flex: 1;
 }
+
+.container {
+    margin-left: 60px; /* Espace réservé à la sidebar */
+    padding-left: 20px; /* Espace visuel entre le contenu et la sidebar */
+    padding-right: 40px; /* Pour éviter que ça touche le bord droit */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
