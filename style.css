@@ -341,3 +341,23 @@ body.with-sidebar.sidebar-expanded #sidebar {
     max-width: 960px;
     padding: 40px;
 }
+
+/* Suppression du hover */
+.sidebar {
+    width: 60px;
+    transition: width 0.3s ease;
+}
+
+body.sidebar-expanded .sidebar {
+    width: 220px;
+}
+
+/* Adapter le container */
+body.with-sidebar .container {
+    margin-left: 60px;
+    transition: margin-left 0.3s ease;
+}
+
+body.with-sidebar.sidebar-expanded .container {
+    margin-left: 220px;
+}

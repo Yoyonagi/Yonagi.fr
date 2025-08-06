@@ -70,5 +70,15 @@
     <!-- Scripts dynamique -->
     <script src="/scripts/footer-loader.js"></script>
     <script src="/scripts/sidebar-loader.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("toggleSidebar");
+            if (toggleBtn) {
+                toggleBtn.addEventListener("click", () => {
+                    document.body.classList.toggle("sidebar-expanded");
+                });
+            }
+        });
+    </script>
 </body>
 </html>
