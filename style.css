@@ -322,9 +322,9 @@ body {
 }
 
 .container {
-    margin-left: 60px; /* Espace réservé à la sidebar */
-    padding-left: 60px; /* Espace visuel entre le contenu et la sidebar */
-    padding-right: 40px; /* Pour éviter que ça touche le bord droit */
+    margin-left: 100px; /* Espace réservé à la sidebar */
+    padding-left: 40px;
+    padding-right: 40px;
     padding-top: 40px;
     padding-bottom: 40px;
 }
