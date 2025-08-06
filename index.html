@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <style>
+        /* Anti-flash blanc */
+        body {
+            background-color: #1e1e2f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            visibility: hidden; /* ← temporairement caché */
+        }
+    </style>
+
     <!-- Chargement du head-meta commun (favicon, og tags, styles, etc) -->
     <script>
         fetch("/components/head-meta.html")
