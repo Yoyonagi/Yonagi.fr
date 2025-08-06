@@ -102,78 +102,80 @@
     <div id="sidebar" class="sidebar" style="display: none;"></div>
 
     <!-- Contenu principal -->
-    <div class="container">
-        <h1 class="viewer-title">Projet de moule d'injection plastique</h1>
+    <main class="main-content">
+        <div class="container">
+            <h1 class="viewer-title">Projet de moule d'injection plastique</h1>
 
-        <!-- Le viewer 3D -->
-        <div class="viewer-container">
-            <model-viewer id="viewer"
-                          alt="Moule d'injection plastique"
-                          src="../model-viewer/Moule-projet.glb"
-                          ar
-                          auto-rotate
-                          camera-controls
-                          touch-action="pan-y"
-                          shadow-intensity="1"
-                          exposure="1"
-                          poster=""></model-viewer>
-        </div>
-
-        <div class="project-description">
-            <p>
-                Ce projet a été réalisé sur mes deux dernière années d'université. Il s’agit d’un moule d’injection plastique conçu pour produire une pièce éprouvette de traction à usage pédagogique.
-            </p>
-            <p>
-                Le modèle 3D présente l'ensemble du moule, avec ses parties fixes et mobiles. Il a été modélisé sous SolidWorks, usiné à l'aide de Fusion360 puis converti pour une visualisation web.
-            </p>
-            <p>
-                Ce projet s’intègre dans une démarche de simulation et d’optimisation de l’usinage. Plusieurs vidéos présentent les étapes de fabrication et les tests réalisés.
-            </p>
-        </div>
-
-        <div class="video-section">
-            <h2>🎥 Vidéos des simulations d'usinage</h2>
-
-            <div class="video-grid">
-
-                <!-- Vidéo 1 -->
-                <div class="video-iframe">
-                    <iframe src="https://www.youtube.com/embed/Qh49asUTONA"
-                            title="Simulation Usinage - Phase 10"
-                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                    <p>Simulation Usinage - Phase 10</p>
-                </div>
-
-                <!-- Vidéo 2 -->
-                <div class="video-iframe">
-                    <iframe src="https://www.youtube.com/embed/PxtnoZOF9DE"
-                            title="Simulation Usinage - Phase 20"
-                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                    <p>Simulation Usinage - Phase 20</p>
-                </div>
-
-                <!-- Vidéo 3 -->
-                <div class="video-iframe">
-                    <iframe src="https://www.youtube.com/embed/RCWMFDP5iXs"
-                            title="Simulation Usinage - Phase 30"
-                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                    <p>Simulation Usinage - Phase 30</p>
-                </div>
-
+            <!-- Le viewer 3D -->
+            <div class="viewer-container">
+                <model-viewer id="viewer"
+                              alt="Moule d'injection plastique"
+                              src="../model-viewer/Moule-projet.glb"
+                              ar
+                              auto-rotate
+                              camera-controls
+                              touch-action="pan-y"
+                              shadow-intensity="1"
+                              exposure="1"
+                              poster=""></model-viewer>
             </div>
-        </div>
 
-        <!-- Lien retour à l'accueil -->
-        <p style="text-align: center;">
-            <a class="back-link" href="/">⬅ Retour à l'accueil</a>
-        </p>
-    </div>
+            <div class="project-description">
+                <p>
+                    Ce projet a été réalisé sur mes deux dernière années d'université. Il s’agit d’un moule d’injection plastique conçu pour produire une pièce éprouvette de traction à usage pédagogique.
+                </p>
+                <p>
+                    Le modèle 3D présente l'ensemble du moule, avec ses parties fixes et mobiles. Il a été modélisé sous SolidWorks, usiné à l'aide de Fusion360 puis converti pour une visualisation web.
+                </p>
+                <p>
+                    Ce projet s’intègre dans une démarche de simulation et d’optimisation de l’usinage. Plusieurs vidéos présentent les étapes de fabrication et les tests réalisés.
+                </p>
+            </div>
+
+            <div class="video-section">
+                <h2>🎥 Vidéos des simulations d'usinage</h2>
+
+                <div class="video-grid">
+
+                    <!-- Vidéo 1 -->
+                    <div class="video-iframe">
+                        <iframe src="https://www.youtube.com/embed/Qh49asUTONA"
+                                title="Simulation Usinage - Phase 10"
+                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                        <p>Simulation Usinage - Phase 10</p>
+                    </div>
+
+                    <!-- Vidéo 2 -->
+                    <div class="video-iframe">
+                        <iframe src="https://www.youtube.com/embed/PxtnoZOF9DE"
+                                title="Simulation Usinage - Phase 20"
+                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                        <p>Simulation Usinage - Phase 20</p>
+                    </div>
+
+                    <!-- Vidéo 3 -->
+                    <div class="video-iframe">
+                        <iframe src="https://www.youtube.com/embed/RCWMFDP5iXs"
+                                title="Simulation Usinage - Phase 30"
+                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                        <p>Simulation Usinage - Phase 30</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Lien retour à l'accueil -->
+            <p style="text-align: center;">
+                <a class="back-link" href="/">⬅ Retour à l'accueil</a>
+            </p>
+        </div>
+    </main>
     <script src="/scripts/sidebar-loader.js"></script>
     <div id="footer" style="display: none;"></div>
     <script src="/scripts/footer-loader.js"></script>

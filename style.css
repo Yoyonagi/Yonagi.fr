@@ -303,3 +303,41 @@ body.with-sidebar .container {
 body.with-sidebar.sidebar-expanded .container {
     margin-left: 220px;
 }
+
+/* Container centré avec la sidebar réduite (60px) */
+body.with-sidebar .container {
+    margin-left: 60px; /* décalage pour éviter que la sidebar chevauche */
+    padding: 40px;
+    max-width: calc(100% - 60px); /* évite le débordement */
+    box-sizing: border-box;
+}
+
+/* Quand la sidebar est étendue à 220px */
+body.with-sidebar.sidebar-expanded .container {
+    margin-left: 220px;
+    max-width: calc(100% - 220px);
+}
+
+body.with-sidebar {
+    display: flex;
+}
+
+#sidebar {
+    width: 60px; /* ou 220px si étendu */
+}
+
+body.with-sidebar.sidebar-expanded #sidebar {
+    width: 220px;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    padding: 40px;
+}

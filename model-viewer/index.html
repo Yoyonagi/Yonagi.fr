@@ -90,36 +90,38 @@
     <div id="sidebar" class="sidebar" style="display: none;"></div>
 
     <!-- Contenu principal -->
-    <div class="container">
-        <h1 class="viewer-title">Visualisation 3D : Technivibe</h1>
+    <main class="main-content">
+        <div class="container">
+            <h1 class="viewer-title">Visualisation 3D : Technivibe</h1>
 
-        <!-- Le viewer 3D -->
-        <div class="viewer-container">
-            <model-viewer id="viewer"
-                          alt="Modèle 3D Technivibe"
-                          src="Technivibe.glb"
-                          ar
-                          auto-rotate
-                          camera-controls
-                          touch-action="pan-y"
-                          shadow-intensity="1"
-                          exposure="1"
-                          poster=""></model-viewer>
+            <!-- Le viewer 3D -->
+            <div class="viewer-container">
+                <model-viewer id="viewer"
+                              alt="Modèle 3D Technivibe"
+                              src="Technivibe.glb"
+                              ar
+                              auto-rotate
+                              camera-controls
+                              touch-action="pan-y"
+                              shadow-intensity="1"
+                              exposure="1"
+                              poster=""></model-viewer>
+            </div>
+
+            <!-- Boutons pour changer de modèle -->
+            <div class="model-switcher">
+                <button onclick="loadModel('Technivibe.glb', 'Technivibe')">Technivibe</button>
+                <button onclick="loadModel('Injection.glb', 'Injection')">Injection</button>
+                <button onclick="loadModel('Moule-projet.glb', 'Moule')">Moule projet</button>
+                <button onclick="loadModel('Machine-a-cookies.glb', 'Cookies')">Machine à cookies</button>
+            </div>
+
+            <!-- Lien retour à l'accueil -->
+            <p style="text-align: center;">
+                <a class="back-link" href="/">⬅ Retour à l'accueil</a>
+            </p>
         </div>
-
-        <!-- Boutons pour changer de modèle -->
-        <div class="model-switcher">
-            <button onclick="loadModel('Technivibe.glb', 'Technivibe')">Technivibe</button>
-            <button onclick="loadModel('Injection.glb', 'Injection')">Injection</button>
-            <button onclick="loadModel('Moule-projet.glb', 'Moule')">Moule projet</button>
-            <button onclick="loadModel('Machine-a-cookies.glb', 'Cookies')">Machine à cookies</button>
-        </div>
-
-        <!-- Lien retour à l'accueil -->
-        <p style="text-align: center;">
-            <a class="back-link" href="/">⬅ Retour à l'accueil</a>
-        </p>
-    </div>
+    </main>
 
     <!-- Script pour changer de modèle dynamiquement -->
     <script>
