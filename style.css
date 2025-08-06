@@ -1,4 +1,4 @@
-body {
+Ôªøbody {
     background-color: #1e1e2f;
     color: #ffffff;
     font-family: 'Segoe UI', sans-serif;
@@ -236,7 +236,7 @@ body {
     }
 
 
-/* …tend le body pour occuper toute la hauteur de la fenÍtre */
+/* √âtend le body pour occuper toute la hauteur de la fen√™tre */
 html, body {
     height: 100%;
     margin: 0;
@@ -249,11 +249,11 @@ html, body {
 .container {
     flex: 1;
     padding: 40px;
-    margin-left: 60px; /* ou 220px si sidebar Ètendue */
+    margin-left: 60px; /* ou 220px si sidebar √©tendue */
     transition: margin-left 0.3s ease;
 }
 
-/* Le footer est collÈ en bas */
+/* Le footer est coll√© en bas */
 .footer {
     padding: 20px;
     background-color: #1e1e2f;
@@ -293,71 +293,37 @@ html, body {
     width: 100%;
 }
 
-/* DÈcalage standard quand la sidebar est l‡ */
-body.with-sidebar .container {
-    margin-left: 60px;
-    transition: margin-left 0.3s ease;
-}
-
-/* Si la sidebar est Èlargie */
-body.with-sidebar.sidebar-expanded .container {
-    margin-left: 220px;
-}
-
-/* Container centrÈ avec la sidebar rÈduite (60px) */
-body.with-sidebar .container {
-    margin-left: 60px; /* dÈcalage pour Èviter que la sidebar chevauche */
-    padding: 40px;
-    max-width: calc(100% - 60px); /* Èvite le dÈbordement */
-    box-sizing: border-box;
-}
-
-/* Quand la sidebar est Ètendue ‡ 220px */
-body.with-sidebar.sidebar-expanded .container {
-    margin-left: 220px;
-    max-width: calc(100% - 220px);
-}
-
-body.with-sidebar {
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1e1e2f;
+    color: #ffffff;
     display: flex;
 }
 
-#sidebar {
-    width: 60px; /* ou 220px si Ètendu */
-}
-
-body.with-sidebar.sidebar-expanded #sidebar {
-    width: 220px;
-}
-
-.main-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.container {
-    width: 100%;
-    max-width: 960px;
-    padding: 40px;
-}
-
-/* Suppression du hover */
 .sidebar {
     width: 60px;
-    transition: width 0.3s ease;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2c2c3e;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
 }
 
-body.sidebar-expanded .sidebar {
-    width: 220px;
+.logo-sidebar {
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 50%;
 }
 
-/* Adapter le container */
-body.with-sidebar .container {
-    margin-left: 60px;
-    transition: margin-left 0.3s ease;
-}
-
-body.with-sidebar.sidebar-expanded .container {
-    margin-left: 220px;
+/* Contenu principal */
+.container {
+    margin-left: 60px; /* ‚¨ÖÔ∏è C'est tout ce que tu veux */
+    padding: 40px;
+    flex: 1;
 }
