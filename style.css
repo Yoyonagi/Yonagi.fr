@@ -292,3 +292,12 @@ html, body {
     border-top: 1px solid #333;
     width: 100%;
 }
+
+body.with-sidebar .container {
+    margin-left: 60px;
+    transition: margin-left 0.3s ease;
+}
+
+body.with-sidebar .sidebar:hover ~ .container {
+    margin-left: 220px;
+}
