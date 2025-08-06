@@ -1,0 +1,58 @@
+body {
+    background-color: #1e1e2f;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #ff6ec7;
+    box-shadow: 0 0 10px #ff6ec7;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #ff6ec7;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+    a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+i {
+    margin-right: 6px;
+    font-size: 18px;
+    color: #ff6ec7;
+}
+
+.fa-spin-on-hover:hover {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spin-smooth:hover {
+    animation: spinSmooth 0.8s ease-in-out;
+}
+
+@keyframes spinSmooth {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
