@@ -20,11 +20,11 @@
     <!-- Barre latérale -->
     <div id="sidebar"></div>
     <script>
-  fetch("/components/sidebar.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("sidebar").innerHTML = data;
-    });
+        fetch("/components/sidebar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("sidebar").innerHTML = data;
+            });
     </script>
 
     <!-- Contenu principal -->
@@ -74,5 +74,6 @@
         </div>
 
     </div>
+    <script src="/scripts/sidebar-loader.js"></script>
 </body>
 </html>

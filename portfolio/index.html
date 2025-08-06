@@ -48,11 +48,11 @@
     <!-- Barre latérale de navigation -->
     <div id="sidebar"></div>
     <script>
-  fetch("/components/sidebar.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("sidebar").innerHTML = data;
-    });
+        fetch("/components/sidebar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("sidebar").innerHTML = data;
+            });
     </script>
 
 
@@ -87,5 +87,6 @@
         <!-- Lien retour à l'accueil -->
         <p style="margin-top: 40px;"><a href="../">⬅ Retour à l'accueil</a></p>
     </div>
+    <script src="/scripts/sidebar-loader.js"></script>
 </body>
 </html>
