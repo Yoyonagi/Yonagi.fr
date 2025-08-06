@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Template</title>
+
+    <!-- Chargement du head commun -->
+    <script>
+    fetch("/components/head-meta.html")
+      .then(res => res.text())
+      .then(data => document.head.innerHTML += data);
+    </script>
+</head>
+
+<body>
+
+    <!-- Préloader -->
+    <div id="preloader"><p>Chargement des vibes...</p></div>
+
+    <!-- Sidebar (chargée dynamiquement) -->
+    <div id="sidebar" style="display: none;"></div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>Mon Titre de Page</h1>
+        <p>Ici tu peux écrire ton contenu ✍️</p>
+
+        <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. 🌸</p>
+
+        <p><a href="/">⬅ Retour à l'accueil</a></p>
+    </div>
+
+    <!-- Footer (chargé dynamiquement) -->
+    <div id="footer"></div>
+
+    <!-- Scripts pour charger sidebar & footer -->
+    <script src="/scripts/sidebar-loader.js"></script>
+    <script src="/scripts/footer-loader.js"></script>
+
+</body>
+</html>

@@ -1,27 +1,25 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <title>Moule d'injection plastique'</title>
+    <title>Moule d'injection plastique - Yonagi</title>
 
-    <!-- Lien vers la feuille de style globale -->
-    <link rel="stylesheet" href="../style.css" />
+    <!-- Head global (favicon, meta, style global) -->
+    <script>
+        fetch("/components/head-meta.html")
+            .then(res => res.text())
+            .then(data => document.head.innerHTML += data);
+    </script>
 
-    <!-- Favicon dans l'onglet du navigateur -->
-    <link rel="icon" type="image/webp" href="/logo/favicon.webp">
-
-    <!-- Script du composant model-viewer de Google -->
+    <!-- Script spécifique à cette page -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
     <!-- Style spécifique à cette page -->
     <style>
-        /* Conteneur principal pour le viewer */
         .viewer-container {
             max-width: 800px;
             margin: 40px auto;
         }
 
-        /* Style du composant model-viewer */
         model-viewer {
             width: 100%;
             height: 600px;
@@ -29,14 +27,12 @@
             box-shadow: 0 0 20px #0008;
         }
 
-        /* Titre principal */
         .viewer-title {
             margin-top: 40px;
             color: #ff6ec7;
             text-align: center;
         }
 
-        /* Lien de retour */
         .back-link {
             margin-top: 30px;
             display: inline-block;
@@ -86,6 +82,7 @@
             }
     </style>
 </head>
+
 
 <body class="with-sidebar">
     <!-- Sidebar de navigation -->
