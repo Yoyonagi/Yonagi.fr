@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <style>
+        /* Anti-flash blanc */
+        body {
+            background-color: #1e1e2f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            visibility: hidden; /* ← temporairement caché */
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>À propos de moi</title>
+
+    <!-- Head commun (favicon, CSS globale, meta tags, FontAwesome...) -->
+    <script>
+        fetch("/components/head-meta.html")
+            .then(res => res.text())
+            .then(data => document.head.innerHTML += data);
+    </script>
+</head>
+
+<body>
+
+    <!-- Préloader -->
+    <div id="preloader"><p>Chargement des vibes...</p></div>
+
+    <!-- Sidebar (chargée dynamiquement) -->
+    <div id="sidebar" style="display: none;"></div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>À propos de moi</h1>
+        <p>Moi, c’est Yonagi. J'ai 23 ans et je viens te terminer mon BUT Génie mécanique et productique. Je suis une touche-à-tout passionnée, curieuse et un peu perfectionniste sur les bords.</p>
+        <p>Mon parcours m’a amenée à explorer le monde du design, du développement, et de la 3D avec toujours un œil tourné vers les expériences immersives et interactives. J’aime que ce que je fais ait du sens, du style, et parfois un peu de folie aussi.</p>
+        <p>J’ai un faible pour les belles interfaces, les mécaniques bien pensées, et les projets qui mêlent technologie et émotions humaines.</p>
+        <p>Bienvenue sur mon univers.</p>
+        <p><a href="/">⬅ Retour à l'accueil</a></p>
+
+        <section class="skills">
+            <h2>Mes compétences</h2>
+            <ul>
+                <li>Modélisation 3D (Fusion 360, Blender)</li>
+                <li>Développement Web (HTML, CSS, JavaScript)</li>
+                <li>Unity / Réalité Augmentée & Virtuelle</li>
+                <li>Design d’interfaces</li>
+            </ul>
+        </section>
+
+        <section class="timeline">
+            <h2>Parcours</h2>
+            <div class="timeline-item">
+                <h3>2023 — 2026 (Aujourd'hui)</h3>
+                <p>Alternance puis CDD sur un projets AR/VR dans un labo de recherche 🧪</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2020 — 2025</h3>
+                <p>BUT - GMP (Bachelor Universitaire de Technologie - Génie Mécanique et Productique)⚙️</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2018 — 2020</h3>
+                <p>BAC - STI2D (option ITEC) (Baccalauréat Sciences et Technologies de l'Industrie et du Développement Durable - Innovation Technologique et Éco-Conception)⚙️</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2017 — 2018</h3>
+                <p>2de générale</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2013 — 2017</h3>
+                <p>Classico Classique Collège</p>
+            </div>
+        </section>
+
+        <section class="links">
+            <h2>Voir aussi</h2>
+            <ul>
+                <li><a href="/portfolio/">Mon portfolio</a></li>
+                <li><a href="https://github.com/Yoyonagi">Mon GitHub</a></li>
+            </ul>
+        </section>
+
+
+
+    </div>
+
+    <!-- Footer (chargé dynamiquement) -->
+    <div id="footer"></div>
+
+    <!-- Scripts pour charger sidebar & footer -->
+    <script src="/scripts/sidebar-loader.js"></script>
+    <script src="/scripts/footer-loader.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.style.visibility = "visible";
+        });
+    </script>
+</body>
+</html>
