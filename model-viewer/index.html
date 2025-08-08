@@ -24,62 +24,6 @@
 
     <!-- model-viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-
-    <!-- Styles locaux light (le gros vient de tes CSS globales) -->
-    <style>
-        .viewer-wrap {
-            max-width: 1400px;
-            margin: 40px auto
-        }
-
-        model-viewer {
-            width: 100%;
-            height: clamp(380px,65vh,820px);
-            border-radius: 12px;
-            box-shadow: 0 0 20px #0007;
-            background: rgba(255,255,255,.02)
-        }
-
-        .viewer-title {
-            margin: 0 0 10px;
-            color: var(--brand, #7aa2f7);
-            text-align: center
-        }
-
-        .model-switcher {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin: 18px 0 6px
-        }
-
-            .model-switcher button {
-                background: var(--brand,#7aa2f7);
-                color: #fff;
-                border: 0;
-                padding: 10px 14px;
-                border-radius: 10px;
-                font-weight: 600;
-                cursor: pointer
-            }
-
-                .model-switcher button[aria-current="true"] {
-                    background: var(--accent,#f7768e)
-                }
-
-        .hint {
-            color: var(--muted,#a6adbb);
-            text-align: center;
-            margin: 8px 0 24px
-        }
-
-        .back {
-            display: block;
-            text-align: center;
-            margin: 24px auto
-        }
-    </style>
 </head>
 
 <body class="with-sidebar">

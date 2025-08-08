@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>// Meta spécifiques à la 404
+    <script>// Meta spÃ©cifiques Ã  la 404
     window.PAGE = {
-      title: "Page non trouvée — Yonagi",
-      desc: "Oups ! La page que vous cherchez n'existe pas ou a été déplacée.",
+      title: "Page non trouvÃ©e â€” Yonagi",
+      desc: "Oups ! La page que vous cherchez n'existe pas ou a Ã©tÃ© dÃ©placÃ©e.",
       path: "/404.html"
     };
 
@@ -14,7 +14,7 @@
       let html = await res.text();
       const P = window.PAGE || {};
       html = html
-        .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
+        .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi â€” Site')
         .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
         .replaceAll('<!--PAGE_PATH-->', P.path || '/');
       document.head.insertAdjacentHTML('afterbegin', html);
@@ -27,12 +27,12 @@
     <script src="/assets/js/sidebar-loader.js" defer></script>
 
     <main class="container" style="text-align:center; padding:60px 20px;">
-        <h1 style="font-size:clamp(2rem, 5vw, 3rem); margin-bottom:1rem;">404 — Page non trouvée</h1>
+        <h1 style="font-size:clamp(2rem, 5vw, 3rem); margin-bottom:1rem;">404 â€” Page non trouvÃ©e</h1>
         <p style="margin-bottom:2rem; color:var(--muted);">
-            Oups ! La page que vous cherchez n'existe pas ou a été déplacée.
+            Oups ! La page que vous cherchez n'existe pas ou a Ã©tÃ© dÃ©placÃ©e.
         </p>
         <a href="/" class="btn" style="display:inline-block; padding:10px 20px; background:var(--brand); color:white; border-radius:var(--radius); text-decoration:none;">
-            Retour à l'accueil
+            Retour Ã  l'accueil
         </a>
     </main>
 
