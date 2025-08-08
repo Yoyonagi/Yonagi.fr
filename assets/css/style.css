@@ -214,7 +214,7 @@ img {
 .gallery {
     display: grid;
     padding-left: 8%;
-    padding-right 8%;
+    padding-right: 8%;
     gap: 20px;
     margin-top: 30px;
 }
