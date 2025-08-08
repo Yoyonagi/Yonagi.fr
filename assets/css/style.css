@@ -26,8 +26,6 @@ body {
     color: var(--fg);
     background: var(--bg);
     font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
-    display: flex;
-    flex-direction: row;
 }
 
 a {
@@ -65,15 +63,28 @@ img {
 /* Contenu principal (toutes tes pages utilisent .container) */
 .container {
     max-width: var(--maxw);
-    margin-left: var(--sidebar-collapsed);
+    margin-left: var(--sidebar-collapsed); /* décalage avec la sidebar fermée */
     padding: 40px var(--space);
     width: 100%;
     transition: margin-left .25s ease;
+    /* Ajout pour centrer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 #sidebar:hover ~ .container {
-    margin-left: var(--sidebar-expanded)
+    margin-left: var(--sidebar-expanded); /* décalage avec la sidebar ouverte */
 }
+
+
+.container > * {
+    width: 100%;
+    max-width: 900px; /* largeur max du contenu */
+}
+
+
 
 /* ======= Sidebar interne ======= */
 .sidebar {
