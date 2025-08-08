@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yonagi.fr/sitemap.xml

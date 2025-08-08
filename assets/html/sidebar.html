@@ -1,0 +1,144 @@
+﻿<aside class="sidebar" aria-label="Navigation latérale">
+    <a class="logo-wrap" href="/" aria-label="Accueil">
+        <img src="/logo/yonagi.webp" alt="Logo Yonagi" class="logo-sidebar">
+    </a>
+
+    <button class="sidebar-toggle hide-desktop" aria-expanded="false" aria-controls="sidebar-nav">
+        ☰ Menu
+    </button>
+
+    <nav id="sidebar-nav" class="nav-links" role="navigation">
+        <a href="/">🏠 Accueil</a>
+        <a href="/portfolio/">📁 Portfolio</a>
+        <a href="/model-viewer/">🌀 Visualiseur 3D</a>
+        <a href="/moule/">🧩 Projet Moule</a>
+        <a href="/nas/">💽 NAS</a>
+        <a href="/ffxiv/">🎭 FFXIV</a>
+        <a href="/about/">👤 À propos</a>
+    </nav>
+
+    <nav class="lang-switch" aria-label="Changer de langue">
+        <a data-lang="fr" href="#">FR</a> · <a data-lang="en" href="#">EN</a>
+    </nav>
+</aside>
+
+<style>
+    .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: clamp(220px, 22vw, 280px);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        background: rgba(10,10,12,.65);
+        backdrop-filter: blur(10px) saturate(1.1);
+        border-right: 1px solid rgba(255,255,255,.08);
+        z-index: 10;
+    }
+
+    .logo-wrap {
+        display: inline-block
+    }
+
+    .logo-sidebar {
+        width: 120px;
+        height: auto;
+        display: block;
+        margin: 0 auto 6px
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px
+    }
+
+        .nav-links a {
+            padding: 10px 12px;
+            border-radius: 10px;
+            color: var(--fg,#f3f5f7);
+            text-decoration: none;
+        }
+
+            .nav-links a:hover {
+                background: rgba(255,255,255,.06)
+            }
+
+            .nav-links a.active, [aria-current="page"] {
+                background: rgba(122,162,247,.18);
+                outline: 1px solid rgba(122,162,247,.35)
+            }
+
+    .lang-switch {
+        margin-top: auto;
+        text-align: center
+    }
+
+        .lang-switch a {
+            padding: 2px 6px;
+            border-radius: 6px
+        }
+
+            .lang-switch a.active {
+                background: rgba(255,255,255,.08)
+            }
+
+    /* Mobile: la sidebar devient un drawer */
+    @media (max-width: 900px) {
+        .sidebar {
+            transform: translateX(-100%);
+            transition: transform .25s ease;
+            width: min(88vw, 320px);
+            background: rgba(10,10,12,.92);
+        }
+
+            .sidebar.open {
+                transform: translateX(0)
+            }
+
+        .sidebar-toggle {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,.08);
+            color: inherit;
+            border: 1px solid rgba(255,255,255,.12);
+            cursor: pointer;
+        }
+        /* Tu as déjà .with-sidebar sur <body> : pense à neutraliser le décalage sur mobile si besoin */
+    }
+</style>
+
+<script>(function(){
+    // Marquer le lien actif selon l’URL
+    const path = (location.pathname || '/').toLowerCase();
+    document.querySelectorAll('.nav-links a').forEach(a=>{
+      try{
+        const href = (a.getAttribute('href') || '').toLowerCase();
+        // Actif si le path commence par le href (et href != '/'), sinon strict pour la home
+        const isHome = href === '/';
+        const match = isHome ? path === '/' : (href && path.startsWith(href));
+        if(match){ a.classList.add('active'); a.setAttribute('aria-current','page'); }
+      }catch(e){}
+    });
+
+    // Activer l’état actif sur le switch langue
+    const isEn = path.startsWith('/en/');
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(a=>{
+      const lang = a.getAttribute('data-lang');
+      if((lang==='en' && isEn) || (lang==='fr' && !isEn)){
+        a.classList.add('active'); a.setAttribute('aria-current','true');
+      }
+    });
+
+    // Toggle mobile
+    const sb = document.querySelector('.sidebar');
+    const btn = document.querySelector('.sidebar-toggle');
+    if(btn && sb){
+      btn.addEventListener('click', ()=>{
+        const open = sb.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();</script>

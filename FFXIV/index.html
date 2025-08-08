@@ -1,76 +1,100 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <style>
-        /* Anti-flash blanc */
-        body {
-            background-color: #1e1e2f;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden;
-            visibility: hidden; /* ← temporairement caché */
-        }
-    </style>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FFXIV</title>
-
-    <!-- Head commun (favicon, CSS globale, meta tags, FontAwesome...) -->
     <script>
-        fetch("/components/head-meta.html")
-            .then(res => res.text())
-            .then(data => document.head.innerHTML += data);
+        // Meta spécifiques à la page FFXIV
+        window.PAGE = {
+            title: "FFXIV — Yonagi",
+            desc: "Mes persos, captures et règles RP sur Final Fantasy XIV.",
+            path: "/ffxiv/"
+        };
+
+        // Loader head-meta.html depuis /assets/html/
+        (async () => {
+            const res = await fetch('/assets/html/head-meta.html');
+            let html = await res.text();
+            const P = window.PAGE || {};
+            html = html
+                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
+                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
+                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
+            document.head.insertAdjacentHTML('afterbegin', html);
+        })();
     </script>
 </head>
+<body class="with-sidebar">
 
-<body>
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+    <script src="/assets/js/sidebar-loader.js" defer></script>
 
-    <!-- Préloader -->
-    <div id="preloader"><p>Chargement des vibes...</p></div>
+    <main class="container">
+        <header style="display:flex; gap:16px; align-items:end; justify-content:space-between; flex-wrap:wrap;">
+            <div>
+                <h1>Final Fantasy XIV</h1>
+                <p class="muted">Characters • RP info • GPose • Mods</p>
+            </div>
+            <nav class="lang-switch">
+                <a data-lang="fr" href="#">FR</a> · <a data-lang="en" href="#">EN</a>
+            </nav>
+        </header>
 
-    <!-- Sidebar (chargée dynamiquement) -->
-    <div id="sidebar" style="display: none;"></div>
+        <!-- Hero / intro -->
+        <section class="card">
+            <h2>Yo, bienvenue dans mon Eorzea</h2>
+            <p>
+                Ici je pose mes infos FFXIV : présentation de mon perso principal, mes vibes RP, quelques
+                captures GPose. ✨
+            </p>
+        </section>
 
-    <!-- Contenu principal -->
-    <div class="container">
-        <h1>Final Fantasy XIV</h1>
-        <img src="/logo/yonagi.webp" alt="Yonagi FFXIV" class="logo">
+        <!-- Character block -->
+        <section>
+            <h2>Personnage</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Main</h3>
+                    <ul>
+                        <li><strong>Race :</strong> Miqo'te Seekers of the Sun</li>
+                        <li><strong>Rôle :</strong> VPR / MCH / WAR / BLM — selon l’humeur</li>
+                        <li><strong>Serveur :</strong> Chaos DC — [Louisoix]</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
 
-        <p>
-            Je joue une <strong>Miqo'te</strong> in-game 🐾
-            J’adore le RP, faire des donjons, explorer, rester assise sur un banc...
-        </p>
+        <!-- Gallery -->
+        <section>
+            <h2>Galerie</h2>
+            <p class="muted">Quelques captures — plus à venir.</p>
+            <div class="grid">
+                <!-- Remplace les src par tes images -->
+                <figure class="card">
+                    <img src="/assets/img/ffxiv/ffxiv_dx11 2025-07-21 13-34-01_049.png">
+                    <figcaption>Portrait</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15 4poses.png">
+                    <figcaption>Glam</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15_20-50-15_031.png">
+                    <figcaption>Scène</figcaption>
+                </figure>
+                <figure class="card">
+                    <img src="/assets/img/ffxiv/20241221210801_1.jpg">
+                    <figcaption>Quand j'étais encore une Au'ra</figcaption>
+                </figure>
+            </div>
+        </section>
 
+    </main>
 
-        <ul>
-            <p>✨ <strong>Serveur</strong> : [Louisoix]</p>
-            <p>🖤 <strong>Race</strong> : Seeker of the Sun</p>
-            <p>💋 <strong>Orientation</strong> : Pan</p>
-            <p>🎭 <strong>RP</strong> : ERP, Romance</p>
-        </ul>
-
-        <div class="gallery">
-            <img src="/FFXIV/gallery/ffxiv_dx11_2025-07-15_20-50-15_031.png" alt="Screenshot 1">
-            <img src="/FFXIV/gallery/20241221210801_1.jpg" alt="Screenshot 2 (Je suis l'Au'ra cheveux bleu)">
-            <img src="/FFXIV/gallery/ffxiv_dx11_2025-07-15 4poses.png" alt="Screenshot 3">
-            <img src="/FFXIV/gallery/ffxiv_dx11 2025-07-21 13-34-01_049.png" alt="Screenshot 4">
-        </div>
-
-
-    </div>
-
-    <!-- Footer (chargé dynamiquement) -->
+    <!-- Footer -->
     <div id="footer"></div>
+    <script src="/assets/js/footer-loader.js" defer></script>
 
-    <!-- Scripts pour charger sidebar & footer -->
-    <script src="/scripts/sidebar-loader.js"></script>
-    <script src="/scripts/footer-loader.js"></script>
-    <script>
-        window.addEventListener("load", () => {
-            document.body.style.visibility = "visible";
-        });
-    </script>
+    <!-- Lang switch -->
+    <script src="/assets/js/lang.js" defer></script>
 </body>
 </html>

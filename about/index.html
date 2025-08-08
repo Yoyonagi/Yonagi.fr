@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script>
+        // Meta spécifiques à la page À propos
+        window.PAGE = {
+            title: "À propos — Yonagi",
+            desc: "En savoir plus sur Yonagi, son parcours et ses projets.",
+            path: "/about/"
+        };
+
+        // Loader head-meta.html depuis /assets/html/
+        (async () => {
+            const res = await fetch('/assets/html/head-meta.html');
+            let html = await res.text();
+            const P = window.PAGE || {};
+            html = html
+                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
+                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
+                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
+            document.head.insertAdjacentHTML('afterbegin', html);
+        })();
+    </script>
+</head>
+<body class="with-sidebar">
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+    <script src="/assets/js/sidebar-loader.js" defer></script>
+
+    <main class="container">
+        <header>
+            <h1>À propos de moi</h1>
+            <nav class="lang-switch">
+                <a data-lang="fr" href="#">FR</a> · <a data-lang="en" href="#">EN</a>
+            </nav>
+        </header>
+
+        <section>
+            <p>
+                Bonjour, je suis <strong>Yonagi</strong>, passionnée par la modélisation 3D,
+                la réalité augmentée et virtuelle. Mon objectif est de créer des expériences immersives
+                qui allient esthétique et technique.
+            </p>
+            <p>
+                Diplômée en Génie Mécanique et Productique, j’ai travaillé sur des projets allant de la conception de pièces
+                à leur intégration dans des environnements AR/VR pour améliorer l'apprentissage et la réussite des étudiants.
+            </p>
+            <p>
+                Sur ce site, vous trouverez mon <a href="/portfolio/">portfolio</a>,
+                mes projets personnels, ainsi que des informations sur mon serveur NAS et mes expérimentations techniques.
+            </p>
+        </section>
+
+        <section>
+            <h2>Compétences</h2>
+            <ul>
+                <li>Modélisation 3D (SolidWorks, Blender)</li>
+                <li>Intégration AR/VR (Unity, WebXR)</li>
+                <li>Développement web (HTML, CSS, JavaScript)</li>
+                <li>Gestion de projets et travail en équipe</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ce que j’aime</h2>
+            <p>
+                L’innovation, les nouvelles technologies, les projets créatifs et collaboratifs.
+                J’aime explorer de nouvelles idées et repousser les limites de ce que la technologie permet.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="/assets/js/footer-loader.js" defer></script>
+
+    <!-- Script langue -->
+    <script src="/assets/js/lang.js" defer></script>
+
+</body>
+</html>
