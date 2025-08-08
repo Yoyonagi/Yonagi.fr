@@ -146,10 +146,12 @@ img {
 /* ======= Blocks communs ======= */
 .container header {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 16px;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .card {
@@ -228,6 +230,13 @@ img {
     text-align: center;
     padding: 20px;
     border-top: 1px solid #333;
+}
+
+#footer > *, footer > * {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
 }
 
 /* ======= Fancy bits (icons & spin) ======= */
@@ -595,12 +604,6 @@ i {
     object-position: center;
     display: block;
 }
-
-#sidebar:hover .logo-sidebar {
-    transform: rotate(360deg);
-    transition: transform .3s ease;
-}
-
 
 /* === VIEWER CONTAINER + BOX (final) === */
 .container > .viewer-container {
