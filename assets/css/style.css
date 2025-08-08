@@ -6,9 +6,9 @@
     --muted: #aaa;
     --accent: #ff6ec7;
     --shadow: 0 0 10px rgba(0,0,0,.3);
-    --space: clamp(12px,2vw,24px);
+    --space: clamp(12px,2vw,32px); /* padding un peu plus large */
     --radius: 12px;
-    --maxw: 1200px;
+    --maxw: 1600px; /* élargit le container sur desktop */
     --sidebar-collapsed: 60px;
     --sidebar-expanded: 220px;
 }
@@ -71,9 +71,9 @@ img {
 
 /* Contenu principal (toutes tes pages utilisent .container) */
 .container {
-    max-width: 1200px;
-    margin-left: var(--sidebar-collapsed); /* décalage avec la sidebar fermée */
-    padding: 40px var(--space);
+    max-width: var(--maxw);
+    margin-left: var(--sidebar-collapsed);
+    padding: 48px var(--space); /* padding plus large sur desktop */
     width: 100%;
     transition: margin-left .25s ease;
     /* Ajout pour centrer */
