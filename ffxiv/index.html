@@ -1,15 +1,133 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
+    <style>
+        /* Anti-flash blanc */
+        body {
+            background: #1e1e2f;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI',sans-serif;
+            overflow-x: hidden;
+            visibility: hidden
+        }
+
+        .muted {
+            opacity: .8
+        }
+
+        .card {
+            background: #2b2b3d;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 12px #0004
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit,minmax(260px,1fr))
+        }
+
+        .gallery {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit,minmax(220px,1fr))
+        }
+
+            .gallery .tile {
+                position: relative;
+                display: block;
+                border-radius: 10px;
+                overflow: hidden;
+                background: #000
+            }
+
+            .gallery img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block
+            }
+
+            .gallery .cap {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(transparent,#000a);
+                color: #fff;
+                font-size: .9rem;
+                padding: 6px 10px
+            }
+        /* Lightbox */
+        #lightbox[hidden] {
+            display: none
+        }
+
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: #000d;
+            display: grid;
+            place-items: center;
+            z-index: 1000
+        }
+
+            #lightbox img {
+                max-width: min(92vw,1400px);
+                max-height: 82vh;
+                border-radius: 8px;
+                box-shadow: 0 0 24px #000a
+            }
+
+        #lb-cap {
+            color: #fff;
+            margin-top: 8px;
+            text-align: center
+        }
+
+        .lb-close, .lb-nav {
+            position: absolute;
+            background: #000c;
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            cursor: pointer
+        }
+
+        .lb-close {
+            top: 16px;
+            right: 16px
+        }
+
+        .lb-prev {
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%)
+        }
+
+        .lb-next {
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%)
+        }
+    </style>
+
     <script>
-        // Meta spécifiques à la page FFXIV
+        // Meta spécifiques à la page FFXIV (repris de ta version "index new.html")
         window.PAGE = {
             title: "FFXIV — Yonagi",
             desc: "Mes persos, captures et règles RP sur Final Fantasy XIV.",
             path: "/ffxiv/"
         };
-
-        // Loader head-meta.html depuis /assets/html/
+        // Injecte /assets/html/head-meta.html avec remplacements
         (async () => {
             const res = await fetch('/assets/html/head-meta.html');
             let html = await res.text();
@@ -22,8 +140,8 @@
         })();
     </script>
 </head>
-<body class="with-sidebar">
 
+<body class="with-sidebar">
     <!-- Sidebar -->
     <div id="sidebar"></div>
     <script src="/assets/js/sidebar-loader.js" defer></script>
@@ -36,12 +154,11 @@
             </div>
         </header>
 
-        <!-- Hero / intro -->
+        <!-- Intro -->
         <section class="card">
             <h2>Yo, bienvenue dans mon Eorzea</h2>
             <p>
-                Ici je pose mes infos FFXIV : présentation de mon perso principal, mes vibes RP, quelques
-                captures GPose. ✨
+                Ici je pose mes infos FFXIV : présentation de mon perso principal, mes vibes RP, et quelques captures GPose. ✨
             </p>
         </section>
 
@@ -51,14 +168,17 @@
             <div class="grid">
                 <article class="card">
                     <h3>Main</h3>
-                        <p><strong>Race :</strong> Miqo'te Seekers of the Sun</p>
-                        <p><strong>Rôle :</strong> VPR / MCH / WAR / BLM — selon l’humeur</p>
-                        <p><strong>Serveur :</strong> Chaos DC — [Louisoix]</p>
+                    <ul>
+                        <li><strong>Race :</strong> Miqo'te — Seekers of the Sun</li>
+                        <li><strong>Rôles :</strong> VPR / MCH / WAR / BLM (selon l’humeur)</li>
+                        <li><strong>Serveur :</strong> Chaos DC — [Louisoix]</li>
+                        <li><strong>RP :</strong> ERP, Romance</li>
+                    </ul>
                 </article>
             </div>
         </section>
 
-        <!-- Gallery -->
+        <!-- Gallery (préservée de ta nouvelle page) -->
         <section>
             <h2>Galerie</h2>
             <p class="muted">Clique pour ouvrir en grand • ←/→ pour naviguer • Échap pour fermer</p>
@@ -70,8 +190,8 @@
                     <span class="cap">Portrait</span>
                 </a>
 
-                <a class="tile" href="/assets/img/ffxiv/ffxiv_dx11_2025-07-15 4poses.png" data-title="Gpose de groupe">
-                    <img loading="lazy" alt="Glam" src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15 4poses.png">
+                <a class="tile" href="/assets/img/ffxiv/ffxiv_dx11_2025-07-15%204poses.png" data-title="Gpose de groupe">
+                    <img loading="lazy" alt="Glam" src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15%204poses.png">
                     <span class="cap">Glam</span>
                 </a>
 
@@ -95,18 +215,17 @@
             <div id="lb-cap"></div>
             <button class="lb-nav lb-next" aria-label="Suivant">›</button>
         </div>
-
-
     </main>
 
     <!-- Footer -->
     <div id="footer"></div>
     <script src="/assets/js/footer-loader.js" defer></script>
 
-    <!-- Lang switch -->
-    <script src="/assets/js/lang.js" defer></script>
+    <!-- (Optionnel) Lang switch si tu l’utilises -->
+    <!-- <script src="/assets/js/lang.js" defer></script> -->
 
     <script>
+        // Lightbox (repris/clean de ta version)
         (function () {
             const tiles = Array.from(document.querySelectorAll('.gallery .tile'));
             const lb = document.getElementById('lightbox');
@@ -127,27 +246,24 @@
                 lb.hidden = false;
                 document.body.style.overflow = 'hidden';
             }
-            function close() {
-                lb.hidden = true;
-                document.body.style.overflow = '';
-                img.src = '';
-            }
+            function close() { lb.hidden = true; document.body.style.overflow = ''; img.src = ''; }
             function prev() { openAt((idx - 1 + tiles.length) % tiles.length); }
             function next() { openAt((idx + 1) % tiles.length); }
 
-            tiles.forEach((a, i) => {
-                a.addEventListener('click', (e) => { e.preventDefault(); openAt(i); });
-            });
+            tiles.forEach((a, i) => a.addEventListener('click', e => { e.preventDefault(); openAt(i); }));
             btnPrev.addEventListener('click', prev);
             btnNext.addEventListener('click', next);
             btnClose.addEventListener('click', close);
-            lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
-            window.addEventListener('keydown', (e) => {
+            lb.addEventListener('click', e => { if (e.target === lb) close(); });
+            window.addEventListener('keydown', e => {
                 if (lb.hidden) return;
                 if (e.key === 'Escape') close();
                 if (e.key === 'ArrowLeft') prev();
                 if (e.key === 'ArrowRight') next();
             });
+
+            // Anti-flash off une fois tout chargé
+            window.addEventListener('load', () => { document.body.style.visibility = 'visible'; });
         })();
     </script>
 </body>

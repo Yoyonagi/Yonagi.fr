@@ -1,75 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Valeurs spécifiques à la page d'accueil FR
-        window.PAGE = {
-            title: "Yonagi — Accueil",
-            desc: "Bienvenue sur le site de Yonagi. Découvrez mon portfolio, mes projets 3D, AR/VR et plus encore.",
-            path: "/" // chemin relatif racine
-        };
+    <style>
+        /* Anti-flash blanc */
+        body {
+            background-color: #1e1e2f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            visibility: hidden; /* ← temporairement caché */
+        }
+    </style>
 
-        // Loader head-meta.html avec remplacement des placeholders
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
+    <!-- Balises de base -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="/assets/img/logo/favicon.webp" />
 
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
-    </script>
+    <!-- CSS et Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Yonagi" />
+    <meta property="og:description" content="La page d’accueil de Yonagi 💖" />
+    <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp" />
+    <meta property="og:url" content="https://yonagi.fr/" />
+    <meta property="og:type" content="website" />
+
+    <!-- TWITTER CARDS -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yonagi - Site personnel" />
+    <meta name="twitter:description" content="La page d’accueil de Yonagi 🏳️‍⚧️" />
+    <meta name="twitter:image" content="https://yonagi.fr/assets/img/logo/og.webp" />
 </head>
-<body class="with-sidebar">
 
-    <!-- Sidebar (chargée dynamiquement si tu gardes ton sidebar-loader.js) -->
-    <div id="sidebar"></div>
-    <script src="/assets/js/sidebar-loader.js" defer></script>
+<body class="with-sidebar">
+    <!-- Sidebar dynamique -->
+    <div id="sidebar" style="display: none;"></div>
+
+    <!-- Préloader -->
+    <div id="preloader"><p>Chargement des vibes...</p></div>
 
     <!-- Contenu principal -->
-    <header class="site">
-        <div class="container">
-            <h1>Bienvenue chez Yonagi</h1>
+    <div class="container">
+        <img src="/assets/img/logo/og.webp" alt="Yonagi Logo" class="logo" />
+
+        <h1>Bienvenue</h1>
+        <p>
+            Heyyy ! Je suis <strong>Yonagi</strong> ✨<br />
+            J’adore la <strong>tech</strong>, les <strong>jeux vidéo</strong>, les <strong>animes</strong> et <strong>vive les trans</strong> 🏳️‍⚧️
+        </p>
+
+        <a href="/portfolio/"><i class="fas fa-folder-open"></i> Voir mon portfolio</a>
+
+        <p>Tu peux me retrouver ici :</p>
+        <p>
+            <a href="https://github.com/Yoyonagi" target="_blank">
+                <i class="fab fa-github fa-spin-smooth"></i> GitHub
+            </a>
+            <a href="https://x.com/_Yonagi" target="_blank">
+                <i class="fab fa-twitter fa-spin-smooth"></i> Twitter
+            </a>
+            <a href="https://www.reddit.com/user/Yonagi-Kei/" target="_blank">
+                <i class="fab fa-reddit fa-spin-smooth"></i> Reddit
+            </a>
+            <a href="https://www.youtube.com/@KC-Yonagi" target="_blank">
+                <i class="fab fa-youtube fa-spin-smooth"></i> YouTube
+            </a>
+            <a href="https://www.twitch.tv/yoyonagii" target="_blank">
+                <i class="fab fa-twitch fa-spin-smooth"></i> Twitch
+            </a>
+            <a href="mailto:contact@yonagi.fr">
+                <i class="fas fa-envelope fa-spin-smooth"></i> Me contacter
+            </a>
+        </p>
+
+        <!-- Vidéo YouTube en autoplay (muted) -->
+        <div class="video-wrapper">
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/zCaFkqQ6utQ?autoplay=1&mute=1&loop=1&playlist=zCaFkqQ6utQ"
+                        title="Yonagi YouTube"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                </iframe>
+            </div>
         </div>
-    </header>
-
-    <main>
-        <section class="hero container">
-            <h2>Créations 3D, AR/VR et plus</h2>
-            <p>
-                Je suis Yonagi, diplômée en Génie Mécanique et Productique, et passionnée par la création de modèles 3D
-                pour la réalité augmentée et virtuelle. Explorez mes projets, mon portfolio et mon univers.
-            </p>
-        </section>
-
-        <section class="grid container">
-            <article class="card">
-                <h3>Portfolio</h3>
-                <p>Découvrez mes réalisations, prototypes et projets AR/VR.</p>
-                <a href="/portfolio/" class="btn">Voir le portfolio</a>
-            </article>
-            <article class="card">
-                <h3>À propos</h3>
-                <p>Apprenez-en plus sur mon parcours, mes compétences et mes passions.</p>
-                <a href="/about/" class="btn">En savoir plus</a>
-            </article>
-            <article class="card">
-                <h3>NAS & Serveurs</h3>
-                <p>Un aperçu de mon mini-homeserver, Plex et autres projets tech perso.</p>
-                <a href="/nas/" class="btn">Explorer</a>
-            </article>
-        </section>
-    </main>
-
-    <!-- Footer (chargé dynamiquement si tu gardes footer-loader.js) -->
+    </div>
     <div id="footer"></div>
-    <script src="/assets/js/footer-loader.js" defer></script>
 
-    <!-- Script de gestion du switch langue -->
-    <script src="/assets/js/lang.js" defer></script>
-
+    <!-- Scripts dynamiques -->
+    <script src="/assets/js/footer-loader.js"></script>
+    <script src="/assets/js/sidebar-loader.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("toggleSidebar");
+            if (toggleBtn) {
+                toggleBtn.addEventListener("click", () => {
+                    document.body.classList.toggle("sidebar-expanded");
+                });
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.style.visibility = "visible";
+        });
+    </script>
 </body>
 </html>

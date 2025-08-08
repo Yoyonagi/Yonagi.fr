@@ -1,722 +1,343 @@
-﻿/* ======= Reset / Base ======= */
-:root {
-    --bg: #1e1e2f;
-    --panel: #2c2c3e;
-    --fg: #fff;
-    --muted: #aaa;
-    --accent: #ff6ec7;
-    --shadow: 0 0 10px rgba(0,0,0,.3);
-    --space: clamp(12px,2vw,24px);
-    --radius: 12px;
-    --maxw: 1200px;
-    --sidebar-collapsed: 60px;
-    --sidebar-expanded: 220px;
+﻿body {
+    background-color: #1e1e2f;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    padding: 50px;
 }
 
-* {
-    box-sizing: border-box
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #ff6ec7;
+    box-shadow: 0 0 10px #ff6ec7;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #ff6ec7;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+    a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+i {
+    margin-right: 6px;
+    font-size: 18px;
+    color: #ff6ec7;
+}
+
+.fa-spin-on-hover:hover {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spin-smooth:hover {
+    animation: spinSmooth 0.8s ease-in-out;
+}
+
+@keyframes spinSmooth {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #2c2c3e;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+    .sidebar h2 {
+        margin-top: 0;
+        color: #ff6ec7;
+    }
+
+    .sidebar a {
+        display: block;
+        margin: 12px 0;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.2s ease;
+    }
+
+        .sidebar a:hover {
+            color: #ff6ec7;
+            transform: translateX(5px);
+        }
+
+/* Pour laisser de la place au contenu principal */
+.container {
+    margin-left: 240px;
+    padding: 40px;
+    flex: 1;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60px;
+    background-color: #2c2c3e;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+    .sidebar:hover {
+        width: 220px;
+    }
+
+.logo-sidebar {
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.sidebar:hover .logo-sidebar {
+    transform: rotate(360deg);
+}
+
+.nav-links {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease 0.1s;
+    padding: 20px;
+}
+
+.sidebar:hover .nav-links {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav-links a {
+    display: block;
+    margin: 16px 0;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+    .nav-links a:hover {
+        color: #ff6ec7;
+        transform: translateX(5px);
+    }
+
+/* Contenu principal */
+.container {
+    margin-left: 60px;
+    padding: 40px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .container {
+    margin-left: 220px;
+}
+
+.nav-links .active {
+    color: #ff6ec7;
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: default;
+}
+
+.nav-links a[aria-current="page"] {
+    color: #ff6ec7;
+    font-style: italic;
+    cursor: default;
+    pointer-events: none;
+}
+
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.iframe-container {
+    width: 80%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #0005;
+}
+
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1e1e2f;
+    color: #ff6ec7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+    #preloader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+/* Étend le body pour occuper toute la hauteur de la fenêtre */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Le container prend tout l'espace dispo sauf le footer */
+.container {
+    flex: 1;
+    padding: 40px;
+    margin-left: 60px; /* ou 220px si sidebar étendue */
+    transition: margin-left 0.3s ease;
+}
+
+/* Le footer est collé en bas */
+.footer {
+    padding: 20px;
+    background-color: #1e1e2f;
+    color: #aaa;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #333;
+    width: 100%;
 }
 
 html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    margin-left: 60px;
+    padding: 40px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .container {
+    margin-left: 220px;
+}
+
+#footer {
+    padding: 20px;
+    background-color: #1e1e2f;
+    color: #aaa;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #333;
+    width: 100%;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     margin: 0;
-    color: var(--fg);
-    background: var(--bg);
-    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
-}
-
-main {
-    flex: 1; /* prend tout l'espace libre entre header/sidebar et footer */
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1e1e2f;
+    color: #ffffff;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* centre horizontalement le contenu */
 }
 
-a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600
-}
-
-    a:hover {
-        color: #fff;
-        text-decoration: underline
-    }
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block
-}
-
-/* ======= Layout ======= */
-/* #sidebar = conteneur fixe injecté (puis .sidebar à l’intérieur) */
-#sidebar {
-    position: fixed;
-    inset: 0 auto 0 0;
-    z-index: 1000;
-    width: var(--sidebar-collapsed);
-    height: 100vh;
-    transition: width .25s ease;
-}
-
-    #sidebar:hover {
-        width: var(--sidebar-expanded)
-    }
-
-/* Contenu principal (toutes tes pages utilisent .container) */
-.container {
-    max-width: var(--maxw);
-    margin-left: var(--sidebar-collapsed); /* décalage avec la sidebar fermée */
-    padding: 40px var(--space);
-    width: 100%;
-    transition: margin-left .25s ease;
-    /* Ajout pour centrer */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-#sidebar:hover ~ .container {
-    margin-left: var(--sidebar-expanded); /* décalage avec la sidebar ouverte */
-}
-
-/* ======= Sidebar interne ======= */
 .sidebar {
-    height: 100%;
-    background: var(--panel);
-    box-shadow: 2px 0 8px rgba(0,0,0,.3);
-    padding: 20px;
-    overflow-x: hidden;
+    width: 60px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2c2c3e;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
 }
 
 .logo-sidebar {
     width: 40px;
     height: 40px;
     margin: 20px auto;
-    border-radius: 50%;
-    transition: transform .3s ease;
-}
-
-#sidebar:hover .logo-sidebar {
-    transform: rotate(360deg)
-}
-
-.nav-links {
-    opacity: .0;
-    pointer-events: none;
-    transition: opacity .2s ease .08s;
-    padding: 20px 12px;
-}
-
-#sidebar:hover .nav-links {
-    opacity: 1;
-    pointer-events: auto
-}
-
-.nav-links a {
     display: block;
-    margin: 16px 0;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    transition: transform .2s ease, color .2s ease;
+    border-radius: 50%;
 }
 
-    .nav-links a:hover {
-        color: var(--accent);
-        transform: translateX(5px)
-    }
-
-    .nav-links a.active,
-    .nav-links a[aria-current="page"] {
-        color: var(--accent);
-        opacity: .85;
-        cursor: default;
-        pointer-events: none;
-        font-style: italic;
-    }
-
-/* ======= Blocks communs ======= */
-.container header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    text-align: center;
+.container {
+    margin-left: 100px; /* Espace réservé à la sidebar */
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
-
-.card {
-    background: var(--panel);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    padding: 20px;
-}
-
-.grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-}
-
-.btn {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-    .btn:hover {
-        filter: brightness(.95)
-    }
-
-.lang-switch a.active {
-    background: rgba(255,255,255,.1);
-    border-radius: 6px;
-    padding: 2px 6px
-}
-
-/* ======= Vidéos / Galerie ======= */
-.video-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0
-}
-
-.iframe-container {
-    width: min(960px, 90%);
-    aspect-ratio: 16/9;
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,.33);
-}
-
-    .iframe-container iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: 0
-    }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     margin-top: 30px;
 }
 
     .gallery img {
+        width: 100%;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,.33)
+        box-shadow: 0 0 10px #0005;
     }
-
-/* ======= Footer host (#footer mount) ======= */
-#footer, footer {
-    background: var(--bg);
-    color: var(--muted);
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #333;
-}
-
-#footer > *, footer > * {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: block;
-}
-
-/* ======= Fancy bits (icons & spin) ======= */
-i {
-    margin-right: 6px;
-    font-size: 18px;
-    color: var(--accent)
-}
-
-.fa-spin-on-hover:hover {
-    animation: spin 1s linear infinite
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg)
-    }
-}
-
-.fa-spin-smooth:hover {
-    animation: spinSmooth .8s ease-in-out
-}
-
-@keyframes spinSmooth {
-    100% {
-        transform: rotate(720deg)
-    }
-}
-
-/* ======= Responsive (<=900px) ======= */
-@media (max-width:900px) {
-    /* Drawer mobile: on cache la sidebar par défaut, on l’ouvre via une classe .open (JS bouton) */
-    #sidebar {
-        transform: translateX(-100%);
-        width: min(88vw, 320px);
-        transition: transform .25s ease, width .25s ease
-    }
-
-        #sidebar.open {
-            transform: translateX(0)
-        }
-
-        #sidebar:hover {
-            width: min(88vw, 320px)
-        }
-    /* le hover mobile ne change pas la largeur */
-    .container {
-        margin-left: 0;
-        padding: 28px var(--space)
-    }
-}
-
-
-/* --- FFXIV Gallery --- */
-.gallery {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-
-.tile {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    background: var(--panel);
-    box-shadow: var(--shadow);
-    aspect-ratio: 3 / 4; /* thumbnails uniformes, ça crop clean */
-}
-
-    .tile img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform .25s ease;
-    }
-
-    .tile:hover img {
-        transform: scale(1.05)
-    }
-
-    .tile .cap {
-        position: absolute;
-        left: 8px;
-        bottom: 8px;
-        background: rgba(0,0,0,.45);
-        color: #fff;
-        padding: 4px 8px;
-        border-radius: 6px;
-        font-size: .9rem;
-    }
-
-/* Lightbox overlay */
-#lightbox[hidden] {
-    display: none
-}
-
-#lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0,0,0,.85);
-    display: grid;
-    grid-template-columns: 60px 1fr 60px;
-    grid-template-rows: 60px 1fr 60px;
-    align-items: center;
-    justify-items: center;
-    animation: fadeIn .15s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0
-    }
-
-    to {
-        opacity: 1
-    }
-}
-
-#lb-img {
-    max-width: min(92vw, 1600px);
-    max-height: 82vh;
-    grid-column: 2;
-    grid-row: 2;
-    box-shadow: 0 10px 40px rgba(0,0,0,.6);
-    border-radius: 10px;
-}
-
-#lb-cap {
-    grid-column: 2;
-    grid-row: 3;
-    color: #ddd;
-    text-align: center;
-    padding: 6px 12px;
-}
-
-.lb-close {
-    grid-column: 3;
-    grid-row: 1;
-    align-self: start;
-    justify-self: end;
-    margin: 12px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.3);
-    background: rgba(255,255,255,.1);
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.lb-nav {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.3);
-    background: rgba(255,255,255,.1);
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.lb-prev {
-    grid-column: 1;
-    grid-row: 2
-}
-
-.lb-next {
-    grid-column: 3;
-    grid-row: 2
-}
-
-.lb-nav:hover, .lb-close:hover {
-    background: rgba(255,255,255,.2)
-}
-
-@media (max-width:900px) {
-    #lightbox {
-        grid-template-columns: 48px 1fr 48px;
-        grid-template-rows: 48px 1fr 48px
-    }
-
-    .lb-nav, .lb-close {
-        width: 38px;
-        height: 38px;
-        font-size: 20px
-    }
-}
-
-/* ===== Model Viewer — full width + box ===== */
-.container.fullbleed {
-    max-width: none;
-    width: 100%;
-    padding: 0 var(--space);
-}
-
-.viewer-box {
-    background: var(--panel);
-    border: 1px solid #333;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 12px; /* petite marge interne pour voir la "boîte" */
-    margin: 20px 0;
-}
-
-    /* Le viewer prend toute la largeur dispo et une hauteur qui dépend de l'écran */
-.viewer-box {
-        background: var(--panel);
-        border: 1px solid #333;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 12px;
-        margin: 20px 0;
-}
-
-    .viewer-box model-viewer {
-        display: block;
-        width: 100%;
-        min-height: 600px;
-        height: calc(100vh - 200px); /* adapte la hauteur à la fenêtre */
-        border-radius: calc(var(--radius) - 4px);
-        background: rgba(255,255,255,.03);
-    }
-
-
-
-/* ===== Boutons switch modèle ===== */
-.model-switcher {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-    .model-switcher button {
-        background: var(--panel);
-        color: var(--fg);
-        border: 1px solid var(--accent);
-        padding: 8px 14px;
-        border-radius: 999px; /* pill shape */
-        font-weight: 600;
-        cursor: pointer;
-        transition: all .2s ease;
-    }
-
-        .model-switcher button:hover {
-            background: var(--accent);
-            color: #fff;
-        }
-
-        .model-switcher button[aria-current="true"] {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(255, 110, 199, 0.4);
-        }
-
-/* ===== Vidéos page Moule ===== */
-.moule-videos {
-    display: grid;
-    gap: 20px;
-    margin: 20px 0;
-}
-
-    .moule-videos video {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        min-height: 400px; /* pour éviter qu'elles soient minuscules */
-        background: #000;
-        border-radius: var(--radius);
-        border: 1px solid #333;
-        box-shadow: var(--shadow);
-    }
-
-/* Mode plus immersif pour grand écran */
-@media (min-width: 900px) {
-    .moule-videos video {
-        min-height: 520px;
-        height: calc(80vh - 100px); /* adapte selon la taille de l'écran */
-    }
-}
-
-/* ===== Iframes YouTube responsives ===== */
-.video-embed {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* ratio 16:9 */
-    height: 0;
-    overflow: hidden;
-    background: #000;
-    border-radius: var(--radius);
-    border: 1px solid #333;
-    box-shadow: var(--shadow);
-    margin: 20px 0;
-}
-
-    .video-embed iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-
-/* Boîte claire et large autour du model viewer */
-.viewer-wrap {
-    background: #3a3a4d; /* plus clair que le fond */
-    border: 1px solid #4a4a5e;
-    border-radius: var(--radius);
-    box-shadow: 0 10px 30px rgba(0,0,0,.45);
-    padding: 12px;
-    margin: 24px 0;
-}
-
-    /* Le model viewer occupe vraiment de la place */
-    .viewer-wrap model-viewer {
-        display: block;
-        width: 100%;
-        height: clamp(520px, 78vh, 980px); /* grand par défaut */
-        border-radius: calc(var(--radius) - 4px);
-        background: rgba(255,255,255,.03);
-    }
-
-.video-embed {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-    overflow: hidden;
-    background: #000;
-    border-radius: var(--radius);
-    border: 1px solid #4a4a5e;
-    box-shadow: 0 10px 30px rgba(0,0,0,.45);
-    margin: 24px 0;
-}
-
-    .video-embed iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-
-/* Cadre carré responsive pour le logo dans la sidebar */
-.logo-wrap {
-    display: block;
-    width: min(80%, 120px); /* large en mode étendu, plus petit en compact */
-    aspect-ratio: 1 / 1; /* toujours carré */
-    margin: 20px auto;
-    overflow: hidden; /* pas de débordement */
-}
-
-/* L'image s'adapte sans se déformer */
-.logo-sidebar {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* respecte l’aspect ratio */
-    object-position: center;
-    display: block;
-}
-
-/* === VIEWER CONTAINER + BOX (final) === */
-.container > .viewer-container {
-    max-width: none;
-}
-/* ne pas le brider à 900px si tu as une règle globale */
-
-.viewer-container {
-    width: 100%;
-    max-width: 1600px; /* ajuste si tu veux encore plus large */
-    margin: 24px auto;
-    padding: 0 var(--space); /* aligne avec ta marge globale */
-}
-
-    .viewer-container .viewer-box {
-        background: #3a3a4d; /* plus clair que ton fond (#1e1e2f/#2c2c3e) */
-        border: 1px solid #4a4a5e;
-        border-radius: var(--radius);
-        box-shadow: 0 10px 30px rgba(0,0,0,.45);
-        padding: 12px;
-    }
-
-        .viewer-container .viewer-box model-viewer {
-            display: block;
-            width: 100%;
-            height: clamp(520px, 78vh, 980px); /* bien grand */
-            border-radius: calc(var(--radius) - 4px);
-            background: rgba(255,255,255,.03);
-            --progress-bar-color: var(--accent);
-            --poster-color: transparent;
-        }
-
-/* si quelque chose continue de le rapetisser, décommente temporairement : */
-/* .viewer-container, .viewer-container * { outline: 1px dashed red !important; } */
-
-
-/* Large override : ne PAS brider les blocs .wide */
-.container > *:not(.wide) {
-    max-width: 900px;
-    width: 100%;
-    margin-inline: auto;
-}
-
-/* Section vidéo large, centrée */
-.video-section.wide {
-    max-width: 1600px;
-    margin: 24px auto;
-}
-
-/* Une vidéo par ligne, bien grande */
-.video-grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr; /* 1 colonne = maxi largeur */
-}
-
-/* Wrapper responsive 16:9 + box claire */
-.video-iframe {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9; /* 🔥 clé pour la hauteur auto */
-    background: #000;
-    border-radius: var(--radius);
-    border: 1px solid #4a4a5e;
-    box-shadow: 0 10px 30px rgba(0,0,0,.45);
-    overflow: hidden;
-}
-
-    .video-iframe iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-        display: block;
-    }
-
-    /* Légende */
-    .video-iframe p {
-        margin-top: 10px;
-        color: var(--muted);
-        text-align: center;
-    }
-
-/* Option : sur très grands écrans tu peux passer en 2 colonnes (toujours large) */
-/*
-@media (min-width: 1400px){
-  .video-grid{ grid-template-columns: 1fr 1fr; }
-}
-*/
-
-/* Centrage universel pour les éléments principaux */
-.container > *, .hero, .site, header.site, main, #footer > *, footer > * {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Centrage des headers qui utilisaient flex + space-between */
-.container header,
-header.site,
-header.hero,
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
-/* Correction pour les sections grid et card si besoin */
-.grid, .card {
-    text-align: center;
-}

@@ -1,98 +1,126 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Meta spécifiques à la page Portfolio
-        window.PAGE = {
-            title: "Portfolio — Yonagi",
-            desc: "Quelques projets que j’ai réalisés : site perso, AR/VR, moule d’injection, NAS, et plus.",
-            path: "/portfolio/"
-        };
+    <style>
+        /* Anti-flash blanc */
+        body {
+            background-color: #1e1e2f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            visibility: hidden;
+        }
+    </style>
+    <title>Portfolio - Yonagi</title>
 
-        // Injecte le head commun depuis /assets/html/
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
+    <!-- Head commun -->
+    <script>
+        fetch("/assets/html/head-meta.html")
+            .then(r => r.text())
+            .then(t => document.head.insertAdjacentHTML('beforeend', t));
     </script>
 
-    <!-- Anti-flash (optionnel) -->
+    <!-- Style spécifique -->
     <style>
-        body {
-            visibility: hidden
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 20px;
+            margin-top: 30px
         }
+
+        .project {
+            background: #2c2c3e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0003;
+            text-align: left;
+            transition: transform .2s ease
+        }
+
+            .project:hover {
+                transform: scale(1.03)
+            }
+
+            .project h3 {
+                margin-top: 0;
+                color: #ff6ec7
+            }
+
+            .project p {
+                font-size: .95em
+            }
+
+            .project a {
+                color: #ff6ec7;
+                font-weight: 600;
+                text-decoration: none
+            }
+
+                .project a:hover {
+                    text-decoration: underline
+                }
     </style>
 </head>
 
 <body class="with-sidebar">
     <!-- Sidebar -->
     <div id="sidebar"></div>
-    <script src="/assets/js/sidebar-loader.js" defer></script>
 
-    <main>
-        <header class="container hero">
-            <div>
-                <h1>Mon Portfolio</h1>
-                <p class="muted">Voici quelques projets que j’ai réalisés 💻</p>
-            </div>
-        </header>
+    <div id="preloader"><p>Chargement des vibes...</p></div>
 
-        <!-- Grille de projets -->
-        <section class="grid" style="margin-top:30px;">
-            <!-- Projet 1 -->
-            <article class="card">
+    <!-- Contenu -->
+    <div class="container">
+        <h1>Mon Portfolio</h1>
+        <p>Voici quelques projets que j’ai réalisés 💻</p>
+
+        <div class="portfolio-grid">
+            <div class="project">
                 <h3>Projet 1 : Vivre</h3>
                 <p>C’est pas facile tous les jours.</p>
-            </article>
+            </div>
 
-            <!-- Projet 2 -->
-            <article class="card">
+            <div class="project">
                 <h3>Projet 2 : Site personnel</h3>
-                <p>Ce site que tu es en train de lire ! Fait à la main et avec amour (et ChatGPT…) 💖</p>
-            </article>
+                <p>Ce site que tu es en train de lire ! Fait à la main et avec amour (et un peu d’IA) 💖</p>
+            </div>
 
-            <!-- Projet 3 avec lien vers le viewer -->
-            <article class="card">
+            <div class="project">
                 <h3>Projet 3 : Alternance / CDD</h3>
-                <p>Réalisation de multiples machines en 3D afin d’améliorer la réussite étudiante dans ma région.</p>
-                <p><a href="/model-viewer/">🌀 Voir en 3D</a></p>
-            </article>
+                <p>Modélisation de machines en 3D pour améliorer la réussite étudiante (AR/VR).</p>
+                <a href="/model-viewer/">🌀 Voir en 3D</a>
+            </div>
 
-            <!-- Projet 4 avec lien -->
-            <article class="card">
+            <div class="project">
                 <h3>Projet 4 : Moule d’injection plastique</h3>
-                <p>Réalisation complète d’un moule d’injection plastique pour des éprouvettes de traction.</p>
-                <p><a href="/moule/">🌀 Voir la page</a></p>
-            </article>
+                <p>Réalisation complète d’un moule d’injection pour des éprouvettes de traction.</p>
+                <a href="/moule/">🌀 Voir la page</a>
+            </div>
 
-            <!-- Projet 5 avec lien -->
-            <article class="card">
+            <div class="project">
                 <h3>Projet 5 : Mon NAS / Serveur</h3>
-                <p>Un petit serveur me permettant de faire pas mal d’économies !</p>
-                <p><a href="/nas/">💽 Voir la page</a></p>
-            </article>
-        </section>
+                <p>Un petit serveur maison qui me fait économiser pas mal 💸</p>
+                <a href="/nas/">💽 Voir la page</a>
+            </div>
+        </div>
 
-        <!-- Retour -->
         <p style="margin-top:40px;"><a href="/">⬅ Retour à l’accueil</a></p>
-    </main>
+    </div>
 
     <!-- Footer -->
     <div id="footer"></div>
-    <script src="/assets/js/footer-loader.js" defer></script>
 
-    <!-- Lang switch -->
-    <script src="/assets/js/lang.js" defer></script>
-
+    <!-- Scripts -->
+    <script src="/assets/js/sidebar-loader.js"></script>
+    <script src="/assets/js/footer-loader.js"></script>
     <script>
-        // Révéler la page une fois chargée
-        window.addEventListener('load', () => { document.body.style.visibility = 'visible'; });
+        document.addEventListener("DOMContentLoaded", () => {
+            const t = document.getElementById("toggleSidebar");
+            if (t) t.addEventListener("click", () => document.body.classList.toggle("sidebar-expanded"));
+        });
+        window.addEventListener("load", () => { document.body.style.visibility = "visible"; });
     </script>
 </body>
 </html>
