@@ -1,36 +1,18 @@
-// Chargement de la sidebar
-fetch("/components/sidebar.html")
-    .then(res => res.text())
-    .then(data => {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.innerHTML = data;
-        sidebar.style.display = "block";
-        sidebar.classList.add("visible");
+(async () => {
+    const mount = document.getElementById('sidebar');
+    if (!mount) return;
+    try {
+        const res = await fetch('/assets/html/sidebar.html', { cache: 'no-cache' });
+        if (!res.ok) throw new Error(`Sidebar fetch failed: ${res.status}`);
+        const html = await res.text();
 
-        // Détection du lien actif intelligent (supporte /index.html ou /)
-        const currentPath = window.location.pathname.replace(/index\.html$/, "");
-
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            const linkPath = new URL(link.href).pathname.replace(/index\.html$/, "");
-
-            if (currentPath === linkPath) {
-                link.setAttribute("aria-current", "page");
-            }
-        });
-
-        // Suppression du loader une fois la sidebar prête
-        const preloader = document.getElementById("preloader");
-        if (preloader) {
-            preloader.classList.add("fade-out");
-            setTimeout(() => {
-                preloader.remove();
-            }, 500);
+        // Garde-fou: n'injecte pas une page complète/404
+        if (html.includes('<!DOCTYPE html') || html.match(/<title>.*404/i)) {
+            console.warn('Sidebar looks like a full page/404, aborting inject.');
+            return;
         }
-        // Ajout dynamique de la classe si hover
-        sidebar.addEventListener("mouseenter", () => {
-            document.body.classList.add("sidebar-expanded");
-        });
-        sidebar.addEventListener("mouseleave", () => {
-            document.body.classList.remove("sidebar-expanded");
-        });
-    });
+        mount.innerHTML = html;
+    } catch (e) {
+        console.error(e);
+    }
+})();

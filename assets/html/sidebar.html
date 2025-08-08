@@ -1,13 +1,30 @@
-﻿<div class="sidebar">
-    <img src="/assets/img/logo/og.webp" alt="Yonagi Logo" class="logo-sidebar">
+﻿<aside class="sidebar" aria-label="Navigation latérale">
+    <a class="logo-wrap" href="/" aria-label="Accueil">
+        <img src="/assets/img/logo/og.webp" alt="Logo Yonagi" class="logo-sidebar">
+    </a>
 
-    <nav class="nav-links">
+    <button id="toggleSidebar" class="hide-desktop" aria-expanded="false" aria-controls="sidebar-nav" style="display:none">☰ Menu</button>
+
+    <nav id="sidebar-nav" class="nav-links" role="navigation">
         <a href="/">🏠 Accueil</a>
         <a href="/portfolio/">📁 Portfolio</a>
         <a href="/model-viewer/">🌀 Visualiseur 3D</a>
         <a href="/moule/">🧩 Projet Moule</a>
         <a href="/nas/">💽 NAS</a>
         <a href="/ffxiv/">🎭 FFXIV</a>
-        <a href="/about/">🧩 À propos de moi</a>
+        <a href="/about/">👤 À propos</a>
     </nav>
-</div>
+</aside>
+
+<script>
+    // Active link
+    (function () {
+        const path = (location.pathname || '/').toLowerCase();
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            const href = (a.getAttribute('href') || '').toLowerCase();
+            const isHome = href === '/';
+            const match = isHome ? path === '/' : (href && path.startsWith(href));
+            if (match) { a.classList.add('active'); a.setAttribute('aria-current', 'page'); }
+        });
+    })();
+</script>

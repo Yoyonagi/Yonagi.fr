@@ -1,151 +1,101 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <style>
-        /* Anti-flash blanc */
-        body {
-            background-color: #1e1e2f;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden;
-            visibility: hidden;
-        }
-    </style>
-    <title>Visualiseur 3D - Yonagi</title>
-
-    <!-- Head commun -->
     <script>
-        fetch("/assets/html/head-meta.html")
-            .then(res => res.text())
-            .then(data => document.head.innerHTML += data);
+        // Meta spécifiques à la page Model Viewer
+        window.PAGE = {
+            title: "Visualiseur 3D — Yonagi",
+            desc: "Explore mes modèles 3D directement dans le navigateur : rotation, zoom, AR et switch entre plusieurs scènes.",
+            path: "/model-viewer/"
+        };
+
+        // Injecte le head commun
+        (async () => {
+            const res = await fetch('/assets/html/head-meta.html');
+            let html = await res.text();
+            const P = window.PAGE || {};
+            html = html
+                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
+                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
+                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
+            document.head.insertAdjacentHTML('afterbegin', html);
+        })();
     </script>
 
-    <!-- Script model-viewer -->
+    <!-- model-viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-
-    <!-- Style spécifique -->
-    <style>
-        .viewer-container {
-            max-width: 1400px;
-            margin: 40px auto;
-        }
-
-        model-viewer {
-            width: 100%;
-            height: 800px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px #0008;
-        }
-
-        .viewer-title {
-            margin-top: 40px;
-            color: #ff6ec7;
-            text-align: center;
-        }
-
-        .back-link {
-            margin-top: 30px;
-            display: inline-block;
-            color: #ff6ec7;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-            .back-link:hover {
-                text-decoration: underline;
-            }
-
-        .model-switcher {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-            .model-switcher button {
-                background-color: #ff6ec7;
-                color: #fff;
-                border: none;
-                padding: 10px 15px;
-                border-radius: 8px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: background-color 0.2s ease;
-            }
-
-                .model-switcher button:hover {
-                    background-color: #e25cae;
-                }
-    </style>
 </head>
 
 <body class="with-sidebar">
     <!-- Sidebar -->
     <div id="sidebar"></div>
+    <script src="/assets/js/sidebar-loader.js" defer></script>
 
-    <!-- Préloader -->
-    <div id="preloader"><p>Chargement des vibes...</p></div>
+    <main class="container">
+        <header class="container">
+            <div>
+                <h1 class="viewer-title">Visualisation 3D</h1>
+                <p class="muted">Rotation • Zoom • AR (sur mobile compatible)</p>
+            </div>
+        </header>
 
-    <!-- Contenu principal -->
-    <div class="container">
-        <h1 class="viewer-title">Visualisation 3D : Technivibe</h1>
-
-        <!-- Viewer 3D -->
-        <div class="viewer-container">
-            <model-viewer id="viewer"
-                          alt="Modèle 3D Technivibe"
-                          src="Technivibe.glb"
-                          ar
-                          auto-rotate
-                          camera-controls
-                          touch-action="pan-y"
-                          shadow-intensity="1"
-                          exposure="1"></model-viewer>
+        <!-- Switcher -->
+        <div class="model-switcher" id="switcher">
+            <!-- Mets les bons chemins si tu as des sous-dossiers: /assets/3d/<sous-dossier>/<fichier>.glb -->
+            <button data-src="/assets/3d/Technivibe.glb" data-title="Technivibe" aria-current="true">Technivibe</button>
+            <button data-src="/assets/3d/Injection.glb" data-title="Injection">Injection</button>
+            <button data-src="/assets/3d/Moule-projet.glb" data-title="Moule (projet)">Moule (projet)</button>
+            <button data-src="/assets/3d/Machine-a-cookies.glb" data-title="Machine à cookies">Machine à cookies</button>
         </div>
+        <p class="hint">Tip: clique un bouton pour changer de modèle</p>
 
-        <!-- Switcher de modèles -->
-        <div class="model-switcher">
-            <button onclick="loadModel('Technivibe.glb', 'Technivibe')">Technivibe</button>
-            <button onclick="loadModel('Injection.glb', 'Injection')">Injection</button>
-            <button onclick="loadModel('Moule-projet.glb', 'Moule')">Moule projet</button>
-            <button onclick="loadModel('Machine-a-cookies.glb', 'Cookies')">Machine à cookies</button>
-        </div>
+        <!-- Viewer -->
+        <section class="viewer-container">
+            <div class="viewer-box">
+                <model-viewer id="viewer"
+                              src="/assets/3d/Technivibe.glb"
+                              alt="Visualiseur 3D"
+                              ar
+                              auto-rotate
+                              camera-controls
+                              touch-action="pan-y"
+                              shadow-intensity="1"
+                              exposure="1">
+                </model-viewer>
+            </div>
+        </section>
 
-        <!-- Retour -->
-        <p style="text-align: center;">
-            <a class="back-link" href="/">⬅ Retour à l'accueil</a>
-        </p>
-    </div>
+        <a class="back" href="/">⬅ Retour à l’accueil</a>
+    </main>
 
     <!-- Footer -->
     <div id="footer"></div>
+    <script src="/assets/js/footer-loader.js" defer></script>
 
-    <!-- Scripts -->
+    <!-- Script: switch dynamique -->
     <script>
-        function loadModel(file, title) {
+        (function () {
             const viewer = document.getElementById('viewer');
-            const heading = document.querySelector('.viewer-title');
-            viewer.setAttribute('src', file);
-            heading.textContent = `Visualisation 3D : ${title}`;
-        }
-    </script>
-    <script src="/assets/js/sidebar-loader.js"></script>
-    <script src="/assets/js/footer-loader.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const toggleBtn = document.getElementById("toggleSidebar");
-            if (toggleBtn) {
-                toggleBtn.addEventListener("click", () => {
-                    document.body.classList.toggle("sidebar-expanded");
-                });
+            const buttons = Array.from(document.querySelectorAll('#switcher button'));
+            const titleEl = document.querySelector('.viewer-title');
+
+            function setActive(btn) {
+                buttons.forEach(b => b.removeAttribute('aria-current'));
+                btn.setAttribute('aria-current', 'true');
             }
-        });
-        window.addEventListener("load", () => {
-            document.body.style.visibility = "visible";
-        });
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const src = btn.getAttribute('data-src');
+                    const title = btn.getAttribute('data-title') || 'Visualisation 3D';
+                    if (src) {
+                        viewer.setAttribute('src', src);
+                        titleEl.textContent = `Visualisation 3D : ${title}`;
+                        setActive(btn);
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
