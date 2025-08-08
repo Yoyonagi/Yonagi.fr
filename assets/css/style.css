@@ -446,12 +446,12 @@ i {
 
     /* Le viewer prend toute la largeur dispo et une hauteur qui dépend de l'écran */
 .viewer-box {
-    background: var(--panel);
-    border: 1px solid #333;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 12px;
-    margin: 20px 0;
+        background: var(--panel);
+        border: 1px solid #333;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 12px;
+        margin: 20px 0;
 }
 
     .viewer-box model-viewer {
@@ -694,3 +694,29 @@ i {
   .video-grid{ grid-template-columns: 1fr 1fr; }
 }
 */
+
+/* Centrage universel pour les éléments principaux */
+.container > *, .hero, .site, header.site, main, #footer > *, footer > * {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Centrage des headers qui utilisaient flex + space-between */
+.container header,
+header.site,
+header.hero,
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+/* Correction pour les sections grid et card si besoin */
+.grid, .card {
+    text-align: center;
+}
