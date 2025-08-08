@@ -31,15 +31,12 @@
     <div id="sidebar"></div>
     <script src="/assets/js/sidebar-loader.js" defer></script>
 
-    <main class="container">
+    <main class="container fullbleed">
         <header style="display:flex;gap:16px;align-items:end;justify-content:space-between;flex-wrap:wrap;">
             <div>
                 <h1 class="viewer-title">Visualisation 3D</h1>
                 <p class="muted">Rotation • Zoom • AR (sur mobile compatible)</p>
             </div>
-            <nav class="lang-switch">
-                <a data-lang="fr" href="#">FR</a> · <a data-lang="en" href="#">EN</a>
-            </nav>
         </header>
 
         <!-- Switcher -->
@@ -55,15 +52,14 @@
         <!-- Viewer -->
         <section class="viewer-wrap">
             <model-viewer id="viewer"
-                          alt="Visualiseur 3D"
                           src="/assets/3d/Technivibe.glb"
+                          alt="Visualiseur 3D"
                           ar
                           auto-rotate
                           camera-controls
                           touch-action="pan-y"
                           shadow-intensity="1"
-                          exposure="1"
-                          poster="">
+                          exposure="1">
             </model-viewer>
         </section>
 
