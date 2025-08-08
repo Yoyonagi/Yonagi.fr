@@ -725,14 +725,14 @@ header {
 .yonagi-logo {
     width: 180px; /* taille ajustable */
     height: auto;
-    border-radius: 14px;
-    border: 3px solid ff6ec7; /* contour rose */
-    box-shadow: 0 0 8px ff6ec788, 0 0 15px ff6ec755, 0 0 25px ff6ec733;
+    border-radius: 100%;
+    border: 3px solid #ff6ec7; /* contour rose */
+    box-shadow: 0 0 8px #ff6ec788, 0 0 15px #ff6ec755, 0 0 25px #ff6ec733;
     margin: 15px 0;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
     .yonagi-logo:hover {
         transform: scale(1.03);
-        box-shadow: 0 0 10px ff6ec7aa, 0 0 20px ff6ec780, 0 0 35px ff6ec766;
+        box-shadow: 0 0 10px #ff6ec7aa, 0 0 20px #ff6ec780, 0 0 35px #ff6ec766;
     }
