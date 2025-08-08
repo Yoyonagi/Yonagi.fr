@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Valeurs spécifiques à la page d'accueil FR
-        window.PAGE = {
-            title: "Yonagi — Accueil",
-            desc: "Bienvenue sur le site de Yonagi. Découvrez mon portfolio, mes projets 3D, AR/VR et plus encore.",
-            path: "/" // chemin relatif racine
-        };
 
-        // Loader head-meta.html avec remplacement des placeholders
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yonagi" />
+    <meta property="og:title" content="Yonagi" />
+    <meta property="og:description" content="J'ai aucune idée" />
+    <meta property="og:url" content="https://yonagi.fr" />
+    <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp" />
+    <meta property="og:image:alt" content="Yonagi — preview" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yonagi" />
+    <meta name="twitter:description" content="J'ai aucune idée" />
+    <meta name="twitter:image" content="https://yonagi.fr/assets/img/logo/og.webp" />
 
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
-    </script>
+    <link rel="icon" type="image/webp" href="/assets/logo/favicon.webp">
+    <meta name="theme-color" content="#0b0b0d" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body class="with-sidebar">
@@ -36,7 +32,7 @@
             <h1>Bienvenue</h1>
 
             <!-- Logo cute -->
-            <img class="yonagi-logo" src="/assets/img/logo/og.webp" alt="Logo Yonagi">
+            <img class="yonagi-logo" src="/assets/img/logo/og.webp" alt="Logo Yonagi" style="width: 200px;">
 
             <p>
                 Heyyy ! Je suis <strong>Yonagi</strong> ✨<br />
