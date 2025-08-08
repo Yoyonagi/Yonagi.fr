@@ -535,3 +535,68 @@ i {
         width: 100%;
         height: 100%;
     }
+
+
+/* Boîte claire et large autour du model viewer */
+.viewer-wrap {
+    background: #3a3a4d; /* plus clair que le fond */
+    border: 1px solid #4a4a5e;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+    padding: 12px;
+    margin: 24px 0;
+}
+
+    /* Le model viewer occupe vraiment de la place */
+    .viewer-wrap model-viewer {
+        display: block;
+        width: 100%;
+        height: clamp(520px, 78vh, 980px); /* grand par défaut */
+        border-radius: calc(var(--radius) - 4px);
+        background: rgba(255,255,255,.03);
+    }
+
+.video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: var(--radius);
+    border: 1px solid #4a4a5e;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+    margin: 24px 0;
+}
+
+    .video-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+/* Cadre carré responsive pour le logo dans la sidebar */
+.logo-wrap {
+    display: block;
+    width: min(80%, 120px); /* large en mode étendu, plus petit en compact */
+    aspect-ratio: 1 / 1; /* toujours carré */
+    margin: 20px auto;
+    overflow: hidden; /* pas de débordement */
+}
+
+/* L'image s'adapte sans se déformer */
+.logo-sidebar {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* respecte l’aspect ratio */
+    object-position: center;
+    display: block;
+}
+
+#sidebar:hover .logo-sidebar {
+    transform: rotate(360deg);
+    transition: transform .3s ease;
+}
