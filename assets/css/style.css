@@ -591,8 +591,6 @@ i {
 /* Cadre carré responsive pour le logo dans la sidebar */
 .logo-wrap {
     display: block;
-    width: min(80%, 120px); /* large en mode étendu, plus petit en compact */
-    aspect-ratio: 1 / 1; /* toujours carré */
     overflow: hidden; /* pas de débordement */
 }
 
