@@ -66,27 +66,41 @@
         <!-- Gallery -->
         <section>
             <h2>Galerie</h2>
-            <p class="muted">Quelques captures — plus à venir.</p>
-            <div class="grid">
-                <!-- Remplace les src par tes images -->
-                <figure class="card">
-                    <img src="/assets/img/ffxiv/ffxiv_dx11 2025-07-21 13-34-01_049.png">
-                    <figcaption>Portrait</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15 4poses.png">
-                    <figcaption>Glam</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15_20-50-15_031.png">
-                    <figcaption>Scène</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/assets/img/ffxiv/20241221210801_1.jpg">
-                    <figcaption>Quand j'étais encore une Au'ra</figcaption>
-                </figure>
+            <p class="muted">Clique pour ouvrir en grand • ←/→ pour naviguer • Échap pour fermer</p>
+
+            <div class="gallery">
+                <!-- Tip: renomme tes fichiers avec des tirets (kebab-case) ou encode les espaces (%20) -->
+                <a class="tile" href="/assets/img/ffxiv/ffxiv_dx11%202025-07-21%2013-34-01_049.png" data-title="Portrait - Kawaii">
+                    <img loading="lazy" alt="Portrait" src="/assets/img/ffxiv/ffxiv_dx11%202025-07-21%2013-34-01_049.png">
+                    <span class="cap">Portrait</span>
+                </a>
+
+                <a class="tile" href="/assets/img/ffxiv/ffxiv_dx11_2025-07-15_4poses.png" data-title="Gpose de groupe">
+                    <img loading="lazy" alt="Glam" src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15%204poses.png">
+                    <span class="cap">Glam</span>
+                </a>
+
+                <a class="tile" href="/assets/img/ffxiv/ffxiv_dx11_2025-07-15_20-50-15_031.png" data-title="Portrait - Kaine">
+                    <img loading="lazy" alt="Scène" src="/assets/img/ffxiv/ffxiv_dx11_2025-07-15_20-50-15_031.png">
+                    <span class="cap">Scène</span>
+                </a>
+
+                <a class="tile" href="/assets/img/ffxiv/20241221210801_1.jpg" data-title="Quand j'étais encore une Au'ra">
+                    <img loading="lazy" alt="Quand j'étais encore une Au'ra" src="/assets/img/ffxiv/20241221210801_1.jpg">
+                    <span class="cap">Quand j'étais encore une Au'ra</span>
+                </a>
             </div>
         </section>
+
+        <!-- Lightbox -->
+        <div id="lightbox" hidden>
+            <button class="lb-close" aria-label="Fermer">×</button>
+            <button class="lb-nav lb-prev" aria-label="Précédent">‹</button>
+            <img id="lb-img" alt="">
+            <div id="lb-cap"></div>
+            <button class="lb-nav lb-next" aria-label="Suivant">›</button>
+        </div>
+
 
     </main>
 
@@ -96,5 +110,50 @@
 
     <!-- Lang switch -->
     <script src="/assets/js/lang.js" defer></script>
+
+    <script>
+        (function () {
+            const tiles = Array.from(document.querySelectorAll('.gallery .tile'));
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lb-img');
+            const cap = document.getElementById('lb-cap');
+            const btnPrev = lb.querySelector('.lb-prev');
+            const btnNext = lb.querySelector('.lb-next');
+            const btnClose = lb.querySelector('.lb-close');
+            let idx = -1;
+
+            function openAt(i) {
+                if (i < 0 || i >= tiles.length) return;
+                idx = i;
+                const a = tiles[idx];
+                img.src = a.getAttribute('href');
+                img.alt = a.dataset.title || '';
+                cap.textContent = a.dataset.title || '';
+                lb.hidden = false;
+                document.body.style.overflow = 'hidden';
+            }
+            function close() {
+                lb.hidden = true;
+                document.body.style.overflow = '';
+                img.src = '';
+            }
+            function prev() { openAt((idx - 1 + tiles.length) % tiles.length); }
+            function next() { openAt((idx + 1) % tiles.length); }
+
+            tiles.forEach((a, i) => {
+                a.addEventListener('click', (e) => { e.preventDefault(); openAt(i); });
+            });
+            btnPrev.addEventListener('click', prev);
+            btnNext.addEventListener('click', next);
+            btnClose.addEventListener('click', close);
+            lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+            window.addEventListener('keydown', (e) => {
+                if (lb.hidden) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowLeft') prev();
+                if (e.key === 'ArrowRight') next();
+            });
+        })();
+    </script>
 </body>
 </html>
