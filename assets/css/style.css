@@ -600,3 +600,94 @@ i {
     transform: rotate(360deg);
     transition: transform .3s ease;
 }
+
+
+/* === VIEWER CONTAINER + BOX (final) === */
+.container > .viewer-container {
+    max-width: none;
+}
+/* ne pas le brider à 900px si tu as une règle globale */
+
+.viewer-container {
+    width: 100%;
+    max-width: 1600px; /* ajuste si tu veux encore plus large */
+    margin: 24px auto;
+    padding: 0 var(--space); /* aligne avec ta marge globale */
+}
+
+    .viewer-container .viewer-box {
+        background: #3a3a4d; /* plus clair que ton fond (#1e1e2f/#2c2c3e) */
+        border: 1px solid #4a4a5e;
+        border-radius: var(--radius);
+        box-shadow: 0 10px 30px rgba(0,0,0,.45);
+        padding: 12px;
+    }
+
+        .viewer-container .viewer-box model-viewer {
+            display: block;
+            width: 100%;
+            height: clamp(520px, 78vh, 980px); /* bien grand */
+            border-radius: calc(var(--radius) - 4px);
+            background: rgba(255,255,255,.03);
+            --progress-bar-color: var(--accent);
+            --poster-color: transparent;
+        }
+
+/* si quelque chose continue de le rapetisser, décommente temporairement : */
+/* .viewer-container, .viewer-container * { outline: 1px dashed red !important; } */
+
+
+/* Large override : ne PAS brider les blocs .wide */
+.container > *:not(.wide) {
+    max-width: 900px;
+    width: 100%;
+    margin-inline: auto;
+}
+
+/* Section vidéo large, centrée */
+.video-section.wide {
+    max-width: 1600px;
+    margin: 24px auto;
+}
+
+/* Une vidéo par ligne, bien grande */
+.video-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr; /* 1 colonne = maxi largeur */
+}
+
+/* Wrapper responsive 16:9 + box claire */
+.video-iframe {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9; /* 🔥 clé pour la hauteur auto */
+    background: #000;
+    border-radius: var(--radius);
+    border: 1px solid #4a4a5e;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+    overflow: hidden;
+}
+
+    .video-iframe iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+
+    /* Légende */
+    .video-iframe p {
+        margin-top: 10px;
+        color: var(--muted);
+        text-align: center;
+    }
+
+/* Option : sur très grands écrans tu peux passer en 2 colonnes (toujours large) */
+/*
+@media (min-width: 1400px){
+  .video-grid{ grid-template-columns: 1fr 1fr; }
+}
+*/
