@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Visualiseur 3D — Yonagi</title>
-    <meta name="description" content="Explore mes modèles 3D directement dans le navigateur : rotation, zoom, plein écran et réalité augmentée sur mobile.">
+    <title>3D viewer — Yonagi</title>
+    <meta name="description" content="Explore my 3D models right in the browser: rotate, zoom, go fullscreen, and view them in augmented reality on mobile.">
     <link rel="canonical" href="https://yonagi.fr/model-viewer/">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Yonagi">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:title" content="Visualiseur 3D — Yonagi">
-    <meta property="og:description" content="Explore mes modèles 3D directement dans le navigateur : rotation, zoom, plein écran et réalité augmentée sur mobile.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="3D viewer — Yonagi">
+    <meta property="og:description" content="Explore my 3D models right in the browser: rotate, zoom, go fullscreen, and view them in augmented reality on mobile.">
     <meta property="og:url" content="https://yonagi.fr/model-viewer/">
     <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp">
-    <meta property="og:image:alt" content="Portrait de Yonagi">
+    <meta property="og:image:alt" content="Portrait of Yonagi">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@_Yonagi">
 
@@ -31,40 +31,40 @@
     <link rel="preconnect" href="https://ajax.googleapis.com">
 </head>
 <body>
-    <a class="sr-only" href="#contenu">Aller au contenu</a>
-    <main id="contenu">
+    <a class="sr-only" href="#content">Skip to content</a>
+    <main id="content">
         <header class="page-hero wrap">
-            <p class="eyebrow">Visualiseur 3D</p>
-            <h1 class="display">Tourne, zoome,<br><em>démonte du regard</em></h1>
-            <p class="lede">Mes modèles, tels qu’ils sortent de SolidWorks et Blender. Choisis-en un et manipule-le librement.</p>
+            <p class="eyebrow">3D viewer</p>
+            <h1 class="display">Spin it, zoom in,<br><em>take it apart by eye</em></h1>
+            <p class="lede">My models, straight out of SolidWorks and Blender. Pick one and handle it freely.</p>
         </header>
 
         <section class="section--tight wrap">
             <div class="showroom" data-reveal>
                 <div data-viewer data-model="moule" data-picker="#picker"></div>
-                <div class="picker" id="picker" role="group" aria-label="Choisir un modèle"></div>
+                <div class="picker" id="picker" role="group" aria-label="Choose a model"></div>
             </div>
         </section>
 
         <section class="section wrap">
             <div class="grid grid--3">
                 <article class="card" data-reveal>
-                    <span class="tag">01 — Tourner</span>
-                    <h2 class="h3">Un doigt ou clic gauche</h2>
-                    <p>Glisse pour faire pivoter le modèle. Avec deux doigts (ou clic droit), tu déplaces la vue.</p>
+                    <span class="tag">01 — Rotate</span>
+                    <h2 class="h3">One finger or left click</h2>
+                    <p>Drag to rotate the model. Use two fingers (or right click) to pan the view.</p>
                 </article>
                 <article class="card" data-reveal style="--d:1">
-                    <span class="tag">02 — Zoomer</span>
-                    <h2 class="h3">Pincement ou molette</h2>
-                    <p>Approche-toi des détails. Le bouton de recentrage te ramène à la vue de départ.</p>
+                    <span class="tag">02 — Zoom</span>
+                    <h2 class="h3">Pinch or scroll wheel</h2>
+                    <p>Get close to the details. The recentre button takes you back to the starting view.</p>
                 </article>
                 <article class="card" data-reveal style="--d:2">
-                    <span class="tag">03 — Réalité augmentée</span>
-                    <h2 class="h3">Pose-le chez toi</h2>
-                    <p>Sur un téléphone compatible, un bouton « Voir chez moi en AR » apparaît une fois le modèle chargé.</p>
+                    <span class="tag">03 — Augmented reality</span>
+                    <h2 class="h3">Place it at home</h2>
+                    <p>On a compatible phone, a “View in AR” button appears once the model has loaded.</p>
                 </article>
             </div>
-            <p class="muted mono" style="margin-top:24px" data-reveal>Les deux plus gros modèles pèsent 38 et 48 Mo : ils ne se téléchargent que si tu le demandes.</p>
+            <p class="muted mono" style="margin-top:24px" data-reveal>The two largest models weigh 38 and 48 MB: they only download if you ask for them.</p>
         </section>
     </main>
     <script type="module" src="/assets/js/viewer.js"></script>

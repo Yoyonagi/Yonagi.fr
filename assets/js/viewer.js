@@ -1,27 +1,27 @@
-/* Yonagi.fr — visualiseur GLB.
+/* Yonagi.fr — GLB viewer.
  *
- * Utilisation dans une page :
- *   <div data-viewer data-model="moule"></div>                       → une scène, un modèle
- *   <div data-viewer data-model="moule" data-picker="#picker"></div> → scène + sélecteur de modèles
+ * Usage in a page:
+ *   <div data-viewer data-model="moule"></div>                       → one stage, one model
+ *   <div data-viewer data-model="moule" data-picker="#picker"></div> → stage + model picker
  *
- * Pour ajouter un modèle : déposer le .glb dans /assets/3d/ et ajouter une entrée ci-dessous.
- * L'aperçu (poster) est optionnel : /assets/img/3d/<id>.webp
+ * To add a model: drop the .glb into /assets/3d/ and add an entry below.
+ * The preview (poster) is optional: /assets/img/3d/<id>.webp
  */
 const MODELS = [
     {
         id: 'moule',
-        name: 'Moule d’injection',
+        name: 'Injection mould',
         file: 'Moule-projet.glb',
         size: 1.4,
-        stats: ['28 640 triangles', '5 pièces'],
+        stats: ['28,640 triangles', '5 parts'],
         orbit: '-35deg 70deg 105%',
     },
     {
         id: 'cookies',
-        name: 'Machine à cookies',
+        name: 'Cookie machine',
         file: 'Machine-a-cookies.glb',
         size: 6.8,
-        stats: ['36 708 triangles', '22 pièces'],
+        stats: ['36,708 triangles', '22 parts'],
         orbit: '-35deg 72deg 105%',
     },
     {
@@ -29,7 +29,7 @@ const MODELS = [
         name: 'Injection',
         file: 'Injection.glb',
         size: 37.5,
-        stats: ['440 367 triangles', '55 pièces', '24 textures'],
+        stats: ['440,367 triangles', '55 parts', '24 textures'],
         orbit: '-35deg 72deg 105%',
     },
     {
@@ -37,17 +37,17 @@ const MODELS = [
         name: 'Technivibe',
         file: 'Technivibe.glb',
         size: 47.7,
-        stats: ['679 768 triangles', '442 pièces', '46 textures'],
+        stats: ['679,768 triangles', '442 parts', '46 textures'],
         orbit: '-35deg 72deg 105%',
     },
 ];
 
-/** Au-delà de ce poids (Mo), on demande avant de télécharger — pensé pour la 4G. */
+/** Above this size (MB) we ask before downloading — with mobile data in mind. */
 const AUTOLOAD_MAX_MB = 10;
 const MV_URL = 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js';
 
 const byId = (id) => MODELS.find((m) => m.id === id) || MODELS[0];
-const fmtSize = (mb) => `${String(mb).replace('.', ',')} Mo`;
+const fmtSize = (mb) => `${mb} MB`;
 const poster = (m) => `/assets/img/3d/${m.id}.webp`;
 
 let mvReady;
@@ -76,16 +76,16 @@ function mount(stage) {
         </div>
         <div class="stage__gate" hidden>
             <button class="btn btn--primary" type="button"></button>
-            <p>Modèle lourd : chargé seulement à ta demande.</p>
+            <p>Large model: only loaded when you ask.</p>
         </div>
         <div class="stage__progress" role="status" aria-live="polite"><i></i><span>0 %</span></div>
         <div class="stage__bar">
-            <span class="stage__hint">Glisser pour tourner · molette ou pincement pour zoomer</span>
-            <div class="stage__tools" role="toolbar" aria-label="Commandes du visualiseur">
-                <button class="tool" type="button" data-act="rotate" aria-pressed="true" title="Rotation automatique" aria-label="Rotation automatique">${ICONS.rotate}</button>
-                <button class="tool" type="button" data-act="tone" aria-pressed="false" title="Fond clair / sombre" aria-label="Fond clair">${ICONS.tone}</button>
-                <button class="tool" type="button" data-act="reset" title="Recentrer la vue" aria-label="Recentrer la vue">${ICONS.reset}</button>
-                <button class="tool" type="button" data-act="full" aria-pressed="false" title="Plein écran" aria-label="Plein écran">${ICONS.full}</button>
+            <span class="stage__hint">Drag to rotate · scroll or pinch to zoom</span>
+            <div class="stage__tools" role="toolbar" aria-label="Viewer controls">
+                <button class="tool" type="button" data-act="rotate" aria-pressed="true" title="Auto-rotate" aria-label="Auto-rotate">${ICONS.rotate}</button>
+                <button class="tool" type="button" data-act="tone" aria-pressed="false" title="Light / dark background" aria-label="Light background">${ICONS.tone}</button>
+                <button class="tool" type="button" data-act="reset" title="Recentre the view" aria-label="Recentre the view">${ICONS.reset}</button>
+                <button class="tool" type="button" data-act="full" aria-pressed="false" title="Fullscreen" aria-label="Fullscreen">${ICONS.full}</button>
             </div>
         </div>`;
 
@@ -114,7 +114,7 @@ function mount(stage) {
         mv.setAttribute('ar', '');
         mv.setAttribute('ar-modes', 'webxr scene-viewer quick-look');
         mv.innerHTML = `<div slot="progress-bar"></div>
-            <button slot="ar-button" class="btn stage__ar" type="button">Voir chez moi en AR ↗</button>`;
+            <button slot="ar-button" class="btn stage__ar" type="button">View in AR ↗</button>`;
         mv.addEventListener('progress', (e) => {
             const p = e.detail.totalProgress;
             progress.style.setProperty('--p', p);
@@ -129,7 +129,7 @@ function mount(stage) {
             stage.classList.remove('is-loading');
             const err = document.createElement('p');
             err.className = 'stage__error';
-            err.textContent = 'Impossible de charger ce modèle. Vérifie ta connexion puis réessaie.';
+            err.textContent = 'This model could not be loaded. Check your connection and try again.';
             stage.append(err);
             setTimeout(() => err.remove(), 6000);
             gate.hidden = false;
@@ -146,8 +146,8 @@ function mount(stage) {
         progress.lastElementChild.textContent = '0 %';
         const target = current;
         const viewer = await ensureViewer();
-        if (target !== current) return; // l'utilisateur a changé de modèle entre-temps
-        viewer.setAttribute('alt', `Modèle 3D : ${target.name}`);
+        if (target !== current) return; // the user switched model in the meantime
+        viewer.setAttribute('alt', `3D model: ${target.name}`);
         viewer.setAttribute('camera-orbit', target.orbit);
         viewer.setAttribute('src', `/assets/3d/${target.file}`);
     }
@@ -160,7 +160,7 @@ function mount(stage) {
         $('.stage__name').textContent = model.name;
         $('.stage__stats').innerHTML = [fmtSize(model.size), ...model.stats].map((s) => `<span>${s}</span>`).join('<br>');
         posterEl.src = poster(model);
-        gateBtn.textContent = `Charger le modèle · ${fmtSize(model.size)}`;
+        gateBtn.textContent = `Load the model · ${fmtSize(model.size)}`;
         if (mv) mv.removeAttribute('src');
 
         pickerEl?.querySelectorAll('.pick').forEach((b) => {
@@ -178,7 +178,7 @@ function mount(stage) {
         else gate.hidden = false;
     }
 
-    // Ne télécharge rien tant que la scène n'approche pas de l'écran.
+    // Download nothing until the stage gets close to the viewport.
     let pending = null;
     const io = new IntersectionObserver((entries) => {
         if (entries.some((e) => e.isIntersecting) && pending) { const fn = pending; pending = null; fn(); }
@@ -192,7 +192,7 @@ function mount(stage) {
 
     gateBtn.addEventListener('click', load);
 
-    /* ----- Barre d'outils ----- */
+    /* ----- Toolbar ----- */
     const setExpanded = (on) => {
         stage.classList.toggle('is-expanded', on);
         document.documentElement.style.overflow = on ? 'hidden' : '';
@@ -210,12 +210,12 @@ function mount(stage) {
             if (document.fullscreenElement === stage) document.exitFullscreen();
             else if (stage.classList.contains('is-expanded')) setExpanded(false);
             else if (stage.requestFullscreen) stage.requestFullscreen().catch(() => setExpanded(true));
-            else setExpanded(true); // iPhone : pas d'API plein écran, on agrandit en CSS
+            else setExpanded(true); // iPhone: no fullscreen API, expand with CSS instead
         } else if (mv && act === 'rotate') {
             mv.autoRotate = !mv.autoRotate;
             btn.setAttribute('aria-pressed', String(mv.autoRotate));
         } else if (mv && act === 'reset') {
-            // model-viewer ignore une valeur identique : on alterne entre deux orbites quasi égales.
+            // model-viewer ignores an identical value: alternate between two near-equal orbits.
             const base = current.orbit;
             const alt = base.replace(/^(-?[\d.]+)deg/, (_, n) => `${Number(n) + 0.01}deg`);
             mv.cameraOrbit = mv.cameraOrbit === base ? alt : base;
@@ -229,7 +229,7 @@ function mount(stage) {
     });
     addEventListener('keydown', (e) => e.key === 'Escape' && stage.classList.contains('is-expanded') && setExpanded(false));
 
-    /* ----- Sélecteur ----- */
+    /* ----- Picker ----- */
     if (pickerEl) {
         pickerEl.innerHTML = MODELS.map((m) => `
             <button class="pick" type="button" data-id="${m.id}" aria-pressed="false">

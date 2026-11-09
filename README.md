@@ -1,34 +1,32 @@
 # 🌐 Yonagi.fr
 
-Mon site perso — portfolio, visualiseur 3D, NAS et FFXIV. Hébergé sur **GitHub Pages**.
+My personal website — 3D model viewer and projects. Hosted on **GitHub Pages**.
 
-## Technologies
+## Tech
 
-- **HTML / CSS / JavaScript** à la main, sans framework ni étape de build
-- [**model-viewer**](https://modelviewer.dev/) pour afficher les fichiers GLB (rotation, zoom, plein écran, AR)
+- Hand-written **HTML / CSS / JavaScript**, no framework and no build step
+- [**model-viewer**](https://modelviewer.dev/) to display GLB files (rotate, zoom, fullscreen, AR)
 
 ## Structure
 
-| Chemin | Rôle |
+| Path | Role |
 | --- | --- |
-| `index.html`, `*/index.html` | Les pages (HTML statique) |
-| `assets/css/style.css` | Toute la mise en forme |
-| `assets/js/site.js` | Navigation, pied de page, ciel étoilé, animations, vidéos |
-| `assets/js/viewer.js` | Visualiseur GLB + liste des modèles |
-| `assets/js/gallery.js` | Galerie FFXIV et visionneuse |
-| `assets/3d/` | Modèles `.glb` |
-| `assets/img/3d/` | Aperçus des modèles (`<id>.webp`) |
-| `assets/img/ffxiv/web/` | Versions allégées des captures (les originaux restent à côté) |
+| `index.html`, `*/index.html` | The pages (static HTML) |
+| `assets/css/style.css` | All the styling |
+| `assets/js/site.js` | Navigation, footer, starry sky, animations, videos |
+| `assets/js/viewer.js` | GLB viewer + list of models |
+| `assets/3d/` | `.glb` models |
+| `assets/img/3d/` | Model previews (`<id>.webp`) |
 
-## Ajouter un modèle 3D
+## Adding a 3D model
 
-1. Déposer le fichier dans `assets/3d/`.
-2. Ajouter une entrée dans le tableau `MODELS` en haut de `assets/js/viewer.js`.
-3. (Optionnel) Ajouter un aperçu `assets/img/3d/<id>.webp`.
+1. Drop the file into `assets/3d/`.
+2. Add an entry to the `MODELS` array at the top of `assets/js/viewer.js`.
+3. (Optional) Add a preview at `assets/img/3d/<id>.webp`.
 
-Les modèles de plus de 10 Mo ne sont téléchargés qu'après un clic du visiteur.
+Models over 10 MB are only downloaded after the visitor clicks.
 
-## Tester en local
+## Testing locally
 
 ```bash
 python -m http.server 4173

@@ -1,13 +1,10 @@
-/* Yonagi.fr — éléments communs : navigation, pied de page, ciel étoilé, animations. */
+/* Yonagi.fr — shared pieces: navigation, footer, starry sky, animations. */
 (() => {
     const LINKS = [
-        ['/', 'Accueil'],
-        ['/portfolio/', 'Portfolio'],
-        ['/model-viewer/', 'Visualiseur 3D'],
-        ['/moule/', 'Moule'],
-        ['/nas/', 'NAS'],
-        ['/ffxiv/', 'FFXIV'],
-        ['/about/', 'À propos'],
+        ['/', 'Home'],
+        ['/model-viewer/', '3D Viewer'],
+        ['/moule/', 'Mould'],
+        ['/about/', 'About'],
     ];
     const SOCIALS = [
         ['https://github.com/Yoyonagi', 'GitHub'],
@@ -26,11 +23,11 @@
     const nav = document.createElement('header');
     nav.className = 'nav';
     nav.innerHTML = `
-        <a class="nav__brand" href="/" aria-label="Yonagi — accueil">
+        <a class="nav__brand" href="/" aria-label="Yonagi — home">
             <img src="/assets/img/logo/avatar-256.webp" alt="" width="38" height="38">
             <span>Yonagi<i aria-hidden="true">夜凪</i></span>
         </a>
-        <nav class="nav__links" aria-label="Navigation principale">${LINKS.map(linkHtml).join('')}</nav>
+        <nav class="nav__links" aria-label="Main navigation">${LINKS.map(linkHtml).join('')}</nav>
         <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu">
             <span aria-hidden="true"></span><b>Menu</b>
         </button>`;
@@ -52,7 +49,7 @@
         menu.inert = !open;
         menu.setAttribute('aria-hidden', String(!open));
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.querySelector('b').textContent = open ? 'Fermer' : 'Menu';
+        toggle.querySelector('b').textContent = open ? 'Close' : 'Menu';
         document.documentElement.style.overflow = open ? 'hidden' : '';
     };
     toggle.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
@@ -63,31 +60,31 @@
     addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    /* ---------- Pied de page ---------- */
+    /* ---------- Footer ---------- */
     const footer = document.createElement('footer');
     footer.className = 'footer';
     footer.innerHTML = `
         <div class="wrap">
             <div class="footer__grid">
                 <div>
-                    <p class="eyebrow">Un mot à me dire ?</p>
+                    <p class="eyebrow">Want to say hi?</p>
                     <a class="footer__big" href="mailto:contact@yonagi.fr">contact<em class="grad">@yonagi.fr</em></a>
                 </div>
-                <nav aria-label="Réseaux">
+                <nav aria-label="Social links">
                     ${SOCIALS.map(([h, l]) => `<a href="${h}" target="_blank" rel="noopener">${l} ↗</a>`).join('')}
                     <a href="https://www.reddit.com/user/Yonagi-Kei/" target="_blank" rel="noopener">Reddit ↗</a>
-                    <a href="https://github.com/Yoyonagi/Yonagi.fr" target="_blank" rel="noopener">Code source ↗</a>
+                    <a href="https://github.com/Yoyonagi/Yonagi.fr" target="_blank" rel="noopener">Source code ↗</a>
                 </nav>
             </div>
             <div class="footer__note">
-                <span>© ${new Date().getFullYear()} Yonagi — Tous droits réservés</span>
-                <span>Fait avec ❤️ et un peu de ☕ — propulsé par GitHub Pages 🏳️‍⚧️</span>
+                <span>© ${new Date().getFullYear()} Yonagi — All rights reserved</span>
+                <span>Made with ❤️ and a bit of ☕ — powered by GitHub Pages</span>
             </div>
         </div>
         <div class="footer__kanji" aria-hidden="true">夜凪</div>`;
     document.body.append(footer);
 
-    /* ---------- Apparitions au défilement ---------- */
+    /* ---------- Scroll reveals ---------- */
     const revealEls = document.querySelectorAll('[data-reveal]');
     if ('IntersectionObserver' in window && !reduceMotion) {
         const io = new IntersectionObserver((entries) => {
@@ -100,7 +97,7 @@
         revealEls.forEach((el) => el.classList.add('in'));
     }
 
-    /* ---------- Halo qui suit le pointeur sur les cartes ---------- */
+    /* ---------- Pointer-following glow on cards ---------- */
     if (matchMedia('(hover: hover)').matches) {
         document.addEventListener('pointermove', (e) => {
             const card = e.target.closest?.('.card');
@@ -111,12 +108,12 @@
         }, { passive: true });
     }
 
-    /* ---------- Vidéos YouTube : chargées seulement au clic ---------- */
+    /* ---------- YouTube videos: loaded on click only ---------- */
     document.querySelectorAll('.yt[data-yt]').forEach((btn) => {
         const id = btn.dataset.yt;
-        const title = btn.dataset.title || 'Vidéo YouTube';
+        const title = btn.dataset.title || 'YouTube video';
         btn.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span>▶ ${title}</span>`;
-        btn.setAttribute('aria-label', `Lire la vidéo : ${title}`);
+        btn.setAttribute('aria-label', `Play video: ${title}`);
         btn.addEventListener('click', () => {
             const frame = document.createElement('div');
             frame.className = 'yt is-playing';
@@ -125,7 +122,7 @@
         }, { once: true });
     });
 
-    /* ---------- Ciel étoilé ---------- */
+    /* ---------- Starry sky ---------- */
     const sky = document.createElement('canvas');
     sky.id = 'sky';
     sky.setAttribute('aria-hidden', 'true');
@@ -182,7 +179,7 @@
     const start = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
     seed(); lastW = innerWidth; start();
     addEventListener('resize', () => {
-        // Sur mobile, la barre d'adresse change la hauteur en permanence : on ne régénère que si la largeur change.
+        // On mobile the address bar keeps changing the height: only reseed when the width changes.
         if (innerWidth !== lastW || innerHeight > H) { lastW = innerWidth; seed(); if (reduceMotion) start(); }
     });
     document.addEventListener('visibilitychange', () => (document.hidden ? cancelAnimationFrame(raf) : start()));
