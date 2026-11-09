@@ -1,100 +1,72 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Meta spécifiques à la page Model Viewer
-        window.PAGE = {
-            title: "Visualiseur 3D — Yonagi",
-            desc: "Explore mes modèles 3D directement dans le navigateur : rotation, zoom, AR et switch entre plusieurs scènes.",
-            path: "/model-viewer/"
-        };
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Visualiseur 3D — Yonagi</title>
+    <meta name="description" content="Explore mes modèles 3D directement dans le navigateur : rotation, zoom, plein écran et réalité augmentée sur mobile.">
+    <link rel="canonical" href="https://yonagi.fr/model-viewer/">
 
-        // Injecte le head commun
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
-    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yonagi">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="Visualiseur 3D — Yonagi">
+    <meta property="og:description" content="Explore mes modèles 3D directement dans le navigateur : rotation, zoom, plein écran et réalité augmentée sur mobile.">
+    <meta property="og:url" content="https://yonagi.fr/model-viewer/">
+    <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp">
+    <meta property="og:image:alt" content="Portrait de Yonagi">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_Yonagi">
 
-    <!-- model-viewer -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <link rel="icon" type="image/webp" href="/assets/img/logo/favicon.webp">
+    <meta name="theme-color" content="#07060f">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&text=%E5%A4%9C%E5%87%AA&display=swap">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <script defer src="/assets/js/site.js"></script>
+    <link rel="preconnect" href="https://ajax.googleapis.com">
 </head>
-<body class="with-sidebar">
-
-    <!-- Sidebar -->
-    <div id="sidebar"></div>
-    <script src="/assets/js/sidebar-loader.js" defer></script>
-
-    <main>
-        <header class="container hero">
-            <div>
-                <h1 class="viewer-title">Visualisation 3D</h1>
-                <p class="muted">Rotation • Zoom • AR (sur mobile compatible)</p>
-            </div>
+<body>
+    <a class="sr-only" href="#contenu">Aller au contenu</a>
+    <main id="contenu">
+        <header class="page-hero wrap">
+            <p class="eyebrow">Visualiseur 3D</p>
+            <h1 class="display">Tourne, zoome,<br><em>démonte du regard</em></h1>
+            <p class="lede">Mes modèles, tels qu’ils sortent de SolidWorks et Blender. Choisis-en un et manipule-le librement.</p>
         </header>
 
-            <!-- Switcher -->
-            <div class="model-switcher" id="switcher">
-                <!-- Mets les bons chemins si tu as des sous-dossiers: /assets/3d/<sous-dossier>/<fichier>.glb -->
-                <button data-src="/assets/3d/Technivibe.glb" data-title="Technivibe" aria-current="true">Technivibe</button>
-                <button data-src="/assets/3d/Injection.glb" data-title="Injection">Injection</button>
-                <button data-src="/assets/3d/Moule-projet.glb" data-title="Moule (projet)">Moule (projet)</button>
-                <button data-src="/assets/3d/Machine-a-cookies.glb" data-title="Machine à cookies">Machine à cookies</button>
+        <section class="section--tight wrap">
+            <div class="showroom" data-reveal>
+                <div data-viewer data-model="moule" data-picker="#picker"></div>
+                <div class="picker" id="picker" role="group" aria-label="Choisir un modèle"></div>
             </div>
+        </section>
 
-            <!-- Viewer -->
-            <section class="viewer-container">
-                <div class="viewer-box">
-                    <model-viewer id="viewer"
-                              src="/assets/3d/Technivibe.glb"
-                              alt="Visualiseur 3D"
-                              ar
-                              auto-rotate
-                              camera-controls
-                              touch-action="pan-y"
-                              shadow-intensity="1"
-                              exposure="1">
-                    </model-viewer>
-                </div>
-            </section>
-
-        <a class="back" href="/">⬅ Retour à l’accueil</a>
+        <section class="section wrap">
+            <div class="grid grid--3">
+                <article class="card" data-reveal>
+                    <span class="tag">01 — Tourner</span>
+                    <h2 class="h3">Un doigt ou clic gauche</h2>
+                    <p>Glisse pour faire pivoter le modèle. Avec deux doigts (ou clic droit), tu déplaces la vue.</p>
+                </article>
+                <article class="card" data-reveal style="--d:1">
+                    <span class="tag">02 — Zoomer</span>
+                    <h2 class="h3">Pincement ou molette</h2>
+                    <p>Approche-toi des détails. Le bouton de recentrage te ramène à la vue de départ.</p>
+                </article>
+                <article class="card" data-reveal style="--d:2">
+                    <span class="tag">03 — Réalité augmentée</span>
+                    <h2 class="h3">Pose-le chez toi</h2>
+                    <p>Sur un téléphone compatible, un bouton « Voir chez moi en AR » apparaît une fois le modèle chargé.</p>
+                </article>
+            </div>
+            <p class="muted mono" style="margin-top:24px" data-reveal>Les deux plus gros modèles pèsent 38 et 48 Mo : ils ne se téléchargent que si tu le demandes.</p>
+        </section>
     </main>
-
-    <!-- Footer -->
-    <div id="footer"></div>
-    <script src="/assets/js/footer-loader.js" defer></script>
-
-    <!-- Script: switch dynamique -->
-    <script>
-        (function () {
-            const viewer = document.getElementById('viewer');
-            const buttons = Array.from(document.querySelectorAll('#switcher button'));
-            const titleEl = document.querySelector('.viewer-title');
-
-            function setActive(btn) {
-                buttons.forEach(b => b.removeAttribute('aria-current'));
-                btn.setAttribute('aria-current', 'true');
-            }
-
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const src = btn.getAttribute('data-src');
-                    const title = btn.getAttribute('data-title') || 'Visualisation 3D';
-                    if (src) {
-                        viewer.setAttribute('src', src);
-                        titleEl.textContent = `Visualisation 3D : ${title}`;
-                        setActive(btn);
-                    }
-                });
-            });
-        })();
-    </script>
+    <script type="module" src="/assets/js/viewer.js"></script>
 </body>
 </html>

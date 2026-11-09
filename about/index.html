@@ -1,75 +1,82 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Meta spécifiques à la page À propos
-        window.PAGE = {
-            title: "À propos — Yonagi",
-            desc: "En savoir plus sur Yonagi, son parcours et ses projets.",
-            path: "/about/"
-        };
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>À propos — Yonagi</title>
+    <meta name="description" content="En savoir plus sur Yonagi : génie mécanique, modélisation 3D, AR/VR, son parcours et ses projets.">
+    <link rel="canonical" href="https://yonagi.fr/about/">
 
-        // Loader head-meta.html depuis /assets/html/
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
-    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yonagi">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="À propos — Yonagi">
+    <meta property="og:description" content="En savoir plus sur Yonagi : génie mécanique, modélisation 3D, AR/VR, son parcours et ses projets.">
+    <meta property="og:url" content="https://yonagi.fr/about/">
+    <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp">
+    <meta property="og:image:alt" content="Portrait de Yonagi">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_Yonagi">
+
+    <link rel="icon" type="image/webp" href="/assets/img/logo/favicon.webp">
+    <meta name="theme-color" content="#07060f">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&text=%E5%A4%9C%E5%87%AA&display=swap">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <script defer src="/assets/js/site.js"></script>
 </head>
-<body class="with-sidebar">
-
-    <!-- Sidebar -->
-    <div id="sidebar"></div>
-    <script src="/assets/js/sidebar-loader.js" defer></script>
-
-    <main>
-        <header class="container hero">
-            <div>
-                <h1>À propos de moi</h1>
-            </div>
+<body>
+    <a class="sr-only" href="#contenu">Aller au contenu</a>
+    <main id="contenu">
+        <header class="page-hero wrap">
+            <p class="eyebrow">À propos</p>
+            <h1 class="display">Bonjour, je suis<br><em>Yonagi</em></h1>
+            <p class="lede">Passionnée par la modélisation 3D, la réalité augmentée et virtuelle. Mon objectif : créer des expériences immersives qui allient esthétique et technique.</p>
         </header>
 
-        <section>
-            <p>
-                Bonjour, je suis <strong>Yonagi</strong>, passionnée par la modélisation 3D,
-                la réalité augmentée et virtuelle. Mon objectif est de créer des expériences immersives
-                qui allient esthétique et technique.
-            </p>
-            <p>
-                Diplômée en Génie Mécanique et Productique, j’ai travaillé sur des projets allant de la conception de pièces
-                à leur intégration dans des environnements AR/VR pour améliorer l'apprentissage et la réussite des étudiants.
-            </p>
-            <p>
-                Sur ce site, vous trouverez mon <a href="/portfolio/">portfolio</a>,
-                mes projets personnels, ainsi que des informations sur mon serveur NAS et mes expérimentations techniques.
-            </p>
+        <section class="section--tight wrap">
+            <div class="split">
+                <div class="prose stack" data-reveal>
+                    <h2 class="h2">Mon <em>parcours</em></h2>
+                    <p>Diplômée en <strong>Génie Mécanique et Productique</strong>, j’ai travaillé sur des projets allant de la conception de pièces à leur intégration dans des environnements AR/VR pour améliorer l’apprentissage et la réussite des étudiants.</p>
+                    <p>Sur ce site, tu trouveras mon <a href="/portfolio/">portfolio</a>, mes projets personnels, ainsi que des informations sur mon <a href="/nas/">serveur NAS</a> et mes expérimentations techniques.</p>
+                    <h2 class="h2" style="margin-top:1.2em">Ce que <em>j’aime</em></h2>
+                    <p>L’innovation, les nouvelles technologies, les projets créatifs et collaboratifs. J’aime explorer de nouvelles idées et repousser les limites de ce que la technologie permet.</p>
+                </div>
+                <div class="grid" data-reveal style="--d:1">
+                    <article class="card">
+                        <span class="tag">Modélisation 3D</span>
+                        <h3 class="h3">SolidWorks · Blender</h3>
+                        <p>De la pièce mécanique cotée au rendu temps réel.</p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">Intégration AR / VR</span>
+                        <h3 class="h3">Unity · WebXR</h3>
+                        <p>Des modèles qu’on peut manipuler, pas juste regarder.</p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">Développement web</span>
+                        <h3 class="h3">HTML · CSS · JavaScript</h3>
+                        <p>Ce site en est la preuve vivante.</p>
+                    </article>
+                    <article class="card">
+                        <span class="tag">Humain</span>
+                        <h3 class="h3">Gestion de projets &amp; travail en équipe</h3>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Compétences</h2>
-                <p>Modélisation 3D (SolidWorks, Blender)</p>
-                <p>Intégration AR/VR (Unity, WebXR)</p>
-                <p>Développement web (HTML, CSS, JavaScript)</p>
-                <p>Gestion de projets et travail en équipe</p>
-        </section>
-
-        <section>
-            <h2>Ce que j’aime</h2>
-            <p>
-                L’innovation, les nouvelles technologies, les projets créatifs et collaboratifs.
-                J’aime explorer de nouvelles idées et repousser les limites de ce que la technologie permet.
-            </p>
+        <section class="section wrap" data-reveal>
+            <div class="btn-row">
+                <a class="btn btn--primary" href="/portfolio/">Voir mes projets <span class="arrow">↗</span></a>
+                <a class="btn" href="mailto:contact@yonagi.fr">Me contacter</a>
+            </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <div id="footer"></div>
-    <script src="/assets/js/footer-loader.js" defer></script>
 </body>
 </html>

@@ -1,121 +1,79 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Meta spécifiques à la page Moule
-        window.PAGE = {
-            title: "Moule d'injection plastique — Yonagi",
-            desc: "Projet de moule d’injection plastique conçu pour produire une éprouvette de traction à usage pédagogique. Modélisé sous SolidWorks, usiné avec Fusion360, visualisable en 3D.",
-            path: "/moule/"
-        };
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Moule d’injection plastique — Yonagi</title>
+    <meta name="description" content="Projet de moule d’injection plastique conçu pour produire une éprouvette de traction : modélisé sous SolidWorks, usiné avec Fusion 360, visualisable en 3D.">
+    <link rel="canonical" href="https://yonagi.fr/moule/">
 
-        // Charger le head commun depuis /assets/html/
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
-    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yonagi">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="Moule d’injection plastique — Yonagi">
+    <meta property="og:description" content="Projet de moule d’injection plastique conçu pour produire une éprouvette de traction : modélisé sous SolidWorks, usiné avec Fusion 360, visualisable en 3D.">
+    <meta property="og:url" content="https://yonagi.fr/moule/">
+    <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp">
+    <meta property="og:image:alt" content="Portrait de Yonagi">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_Yonagi">
 
-    <!-- Script spécifique: model-viewer -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <link rel="icon" type="image/webp" href="/assets/img/logo/favicon.webp">
+    <meta name="theme-color" content="#07060f">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&text=%E5%A4%9C%E5%87%AA&display=swap">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <script defer src="/assets/js/site.js"></script>
+    <link rel="preconnect" href="https://ajax.googleapis.com">
 </head>
-
-<body class="with-sidebar">
-    <!-- Sidebar -->
-    <div id="sidebar"></div>
-    <script src="/assets/js/sidebar-loader.js" defer></script>
-
-    <main>
-        <header class="container hero">
-            <h1 class="viewer-title">Projet de moule d'injection plastique</h1>
+<body>
+    <a class="sr-only" href="#contenu">Aller au contenu</a>
+    <main id="contenu">
+        <header class="page-hero wrap">
+            <p class="eyebrow">Projet universitaire</p>
+            <h1 class="display">Moule d’injection<br><em>plastique</em></h1>
+            <p class="lede">Deux ans de travail pour un moule complet, conçu pour produire une éprouvette de traction à usage pédagogique.</p>
         </header>
 
-        <!-- Viewer 3D -->
-        <section class="viewer-container">
-            <div class="viewer-box">
-                <model-viewer id="viewer"
-                              alt="Moule d'injection plastique"
-                              src="/assets/3d/Moule-projet.glb"
-                              ar
-                              auto-rotate
-                              camera-controls
-                              touch-action="pan-y"
-                              shadow-intensity="1"
-                              exposure="1"
-                              poster="">
-                </model-viewer>
+        <section class="section--tight wrap">
+            <div data-viewer data-model="moule" data-reveal></div>
+        </section>
+
+        <section class="section wrap">
+            <div class="split">
+                <div class="prose stack" data-reveal>
+                    <h2 class="h2">Le <em>projet</em></h2>
+                    <p>Ce projet a été réalisé sur mes deux <strong>dernières</strong> années d’université. Il s’agit d’un moule d’injection plastique conçu pour produire une pièce <strong>éprouvette de traction</strong> à usage pédagogique.</p>
+                    <p>Le modèle 3D présente l’ensemble du moule, avec ses parties fixes et mobiles. Il a été modélisé sous <strong>SolidWorks</strong>, usiné à l’aide de <strong>Fusion 360</strong>, puis converti pour une visualisation web.</p>
+                    <p>Ce projet s’intègre dans une démarche de simulation et d’optimisation de l’usinage. Plusieurs vidéos présentent les étapes de fabrication et les tests réalisés.</p>
+                </div>
+                <dl class="specs" data-reveal style="--d:1">
+                    <div><dt>Conception</dt><dd>SolidWorks</dd></div>
+                    <div><dt>Usinage</dt><dd>Fusion 360</dd></div>
+                    <div><dt>Pièce produite</dt><dd>Éprouvette de traction</dd></div>
+                    <div><dt>Durée</dt><dd>2 ans</dd></div>
+                    <div><dt>Simulations</dt><dd>3 phases</dd></div>
+                    <div><dt>Modèle web</dt><dd>1,4 Mo</dd></div>
+                </dl>
             </div>
         </section>
 
-        <!-- Description projet (repris de ta page, juste corrigé légèrement) -->
-        <section class="project-description container">
-            <p>
-                Ce projet a été réalisé sur mes deux <strong>dernières</strong> années d'université. Il s’agit d’un moule d’injection plastique conçu pour produire une pièce
-                <strong>éprouvette de traction</strong> à usage pédagogique.
-            </p>
-            <p>
-                Le modèle 3D présente l'ensemble du moule, avec ses parties fixes et mobiles. Il a été modélisé sous <strong>SolidWorks</strong>, usiné à l'aide de <strong>Fusion360</strong>,
-                puis converti pour une visualisation web.
-            </p>
-            <p>
-                Ce projet s’intègre dans une démarche de simulation et d’optimisation de l’usinage. Plusieurs vidéos présentent les étapes de fabrication et les tests réalisés.
-            </p>
+        <section class="section wrap">
+            <div class="section-head" data-reveal>
+                <p class="eyebrow">Fabrication</p>
+                <h2 class="h2">Simulations <em>d’usinage</em></h2>
+            </div>
+            <div class="grid grid--3">
+                <button class="yt" type="button" data-yt="Qh49asUTONA" data-title="Phase 10" data-reveal></button>
+                <button class="yt" type="button" data-yt="PxtnoZOF9DE" data-title="Phase 20" data-reveal style="--d:1"></button>
+                <button class="yt" type="button" data-yt="RCWMFDP5iXs" data-title="Phase 30" data-reveal style="--d:2"></button>
+            </div>
         </section>
-
-        <!-- Vidéos -->
-            <section class="video-section" style="width: 85%">
-                <h2>🎥 Vidéos des simulations d'usinage</h2>
-                    <div class="video-grid">
-                        <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/Qh49asUTONA"
-                            title="Simulation Usinage - Phase 10"
-                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                            <p>Simulation Usinage - Phase 10</p>
-                        </div>
-
-                        <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/PxtnoZOF9DE"
-                            title="Simulation Usinage - Phase 20"
-                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                            <p>Simulation Usinage - Phase 20</p>
-                        </div>
-
-                        <div class="video-iframe">
-                            <iframe src="https://www.youtube.com/embed/RCWMFDP5iXs"
-                            title="Simulation Usinage - Phase 30"
-                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                            <p>Simulation Usinage - Phase 30</p>
-                        </div>
-                    </div>
-            </section>
-
-        <!-- Lien retour -->
-        <p style="text-align:center;">
-            <a class="back-link" href="/">⬅ Retour à l'accueil</a>
-        </p>
     </main>
-
-    <!-- Footer -->
-    <div id="footer"></div>
-    <script src="/assets/js/footer-loader.js" defer></script>
-
-    <!-- Lang switch -->
-    <script src="/assets/js/lang.js" defer></script>
-
-    <script>
-        // Anti-flash: révéler une fois tout chargé
-        window.addEventListener("load", () => {
-            document.body.style.visibility = "visible";
-        });
-    </script>
+    <script type="module" src="/assets/js/viewer.js"></script>
 </body>
 </html>

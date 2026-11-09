@@ -1,137 +1,99 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Meta spécifiques à la page NAS
-        window.PAGE = {
-            title: "NAS — Yonagi",
-            desc: "Mon NAS : 22 To, Plex, Sonarr/Radarr, AMP pour les serveurs de jeux, cloud perso, musique FLAC et machines virtuelles.",
-            path: "/nas/"
-        };
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>NAS — Yonagi</title>
+    <meta name="description" content="Mon NAS : 22 To, Plex, Sonarr/Radarr, AMP pour les serveurs de jeux, cloud perso, musique FLAC et machines virtuelles.">
+    <link rel="canonical" href="https://yonagi.fr/nas/">
 
-        // Injecte le head commun (depuis /assets/html/)
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
-    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yonagi">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="NAS — Yonagi">
+    <meta property="og:description" content="Mon NAS : 22 To, Plex, Sonarr/Radarr, AMP pour les serveurs de jeux, cloud perso, musique FLAC et machines virtuelles.">
+    <meta property="og:url" content="https://yonagi.fr/nas/">
+    <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp">
+    <meta property="og:image:alt" content="Portrait de Yonagi">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_Yonagi">
 
-    <!-- Anti-flash léger (optionnel, tu peux retirer si tu n'en veux pas) -->
-    <style>
-        body {
-            visibility: hidden;
-        }
+    <link rel="icon" type="image/webp" href="/assets/img/logo/favicon.webp">
+    <meta name="theme-color" content="#07060f">
 
-        .nas-hero h1 {
-            margin: 0 0 .4rem
-        }
-
-        .nas-hero p {
-            margin: 0;
-            color: var(--muted,#a6adbb)
-        }
-
-        .services {
-            display: grid;
-            gap: var(--space,20px);
-            grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-            margin-top: clamp(16px,2vw,24px)
-        }
-
-        .service.card a {
-            color: inherit
-        }
-
-        .service.card h3 {
-            margin-top: 0
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&text=%E5%A4%9C%E5%87%AA&display=swap">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <script defer src="/assets/js/site.js"></script>
 </head>
-
-<body class="with-sidebar">
-    <!-- Sidebar -->
-    <div id="sidebar"></div>
-    <script src="/assets/js/sidebar-loader.js" defer></script>
-
-    <main>
-        <header class="container hero">
-            <h1>Mon NAS, mon petit serveur maison</h1>
-            <p>Juste besoin de place au départ… puis c’est devenu un mini home-server 😌</p>
+<body>
+    <a class="sr-only" href="#contenu">Aller au contenu</a>
+    <main id="contenu">
+        <header class="page-hero wrap">
+            <p class="eyebrow">Home-lab</p>
+            <h1 class="display">Mon NAS, mon petit<br><em>serveur maison</em></h1>
+            <p class="lede">Juste besoin de place au départ… puis c’est devenu un mini home-server 😌</p>
         </header>
 
-        <section class="card" style="margin-top:var(--space,20px);">
-            <p>
-                À la base, c’était juste une histoire de place. Je voulais simplement plus d’espace pour stocker mes fichiers.
-                Et puis… c’est devenu bien plus que ça.
-            </p>
-            <p>
-                Aujourd’hui, mon NAS a <strong>22&nbsp;To</strong> de données et tourne 24/7 comme un <strong>serveur personnel</strong>.
-                Il héberge plein de services qui me simplifient la vie, que ce soit pour le multimédia, les jeux ou le stockage.
-            </p>
+        <section class="section--tight wrap">
+            <div class="split">
+                <dl class="specs" data-reveal>
+                    <div><dt>Données</dt><dd>22 To</dd></div>
+                    <div><dt>Disponibilité</dt><dd>24 h / 7 j</dd></div>
+                    <div><dt>Services</dt><dd>6 et +</dd></div>
+                    <div><dt>Musique</dt><dd>FLAC</dd></div>
+                </dl>
+                <div class="prose stack" data-reveal style="--d:1">
+                    <p>À la base, c’était juste une histoire de place. Je voulais simplement plus d’espace pour stocker mes fichiers. Et puis… c’est devenu bien plus que ça.</p>
+                    <p>Aujourd’hui, mon NAS a <strong>22&nbsp;To</strong> de données et tourne 24/7 comme un <strong>serveur personnel</strong>. Il héberge plein de services qui me simplifient la vie, que ce soit pour le multimédia, les jeux ou le stockage.</p>
+                </div>
+            </div>
         </section>
 
-        <section class="container hero">
-            <h2>🌐 Services utilisés</h2>
-            <div class="services">
-                <article class="service card">
-                    <h3>🎬 Plex</h3>
+        <section class="section wrap">
+            <div class="section-head" data-reveal>
+                <p class="eyebrow">Ce qui tourne dessus</p>
+                <h2 class="h2">Services <em>utilisés</em></h2>
+            </div>
+            <div class="grid grid--3">
+                <article class="card" data-reveal>
+                    <span class="tag">🎬 Streaming</span>
+                    <h3 class="h3">Plex</h3>
                     <p>Ma plateforme perso de streaming (films, séries, animés).</p>
-                    <p><a href="https://www.plex.tv/" target="_blank" rel="noopener noreferrer">Site officiel</a></p>
+                    <a class="go" href="https://www.plex.tv/" target="_blank" rel="noopener noreferrer">Site officiel <span>↗</span></a>
                 </article>
-
-                <article class="service card">
-                    <h3>📺 Sonarr & Radarr</h3>
-                    <p>Automatisation de mes bibliothèques séries & films.</p>
-                    <p>
-                        <a href="https://sonarr.tv/" target="_blank" rel="noopener noreferrer">Sonarr</a> ·
-                        <a href="https://radarr.video/" target="_blank" rel="noopener noreferrer">Radarr</a>
-                    </p>
+                <article class="card" data-reveal style="--d:1">
+                    <span class="tag">📺 Automatisation</span>
+                    <h3 class="h3">Sonarr &amp; Radarr</h3>
+                    <p>Automatisation de mes bibliothèques séries &amp; films.</p>
+                    <span class="go"><a href="https://sonarr.tv/" target="_blank" rel="noopener noreferrer">Sonarr ↗</a>&nbsp;·&nbsp;<a href="https://radarr.video/" target="_blank" rel="noopener noreferrer">Radarr ↗</a></span>
                 </article>
-
-                <article class="service card">
-                    <h3>🎮 AMP (CubeCoders)</h3>
+                <article class="card" data-reveal style="--d:2">
+                    <span class="tag">🎮 Jeux</span>
+                    <h3 class="h3">AMP (CubeCoders)</h3>
                     <p>Gestionnaire pour héberger mes serveurs de jeux.</p>
-                    <p><a href="https://cubecoders.com/AMP" target="_blank" rel="noopener noreferrer">AMP — CubeCoders</a></p>
+                    <a class="go" href="https://cubecoders.com/AMP" target="_blank" rel="noopener noreferrer">AMP — CubeCoders <span>↗</span></a>
                 </article>
-
-                <article class="service card">
-                    <h3>☁️ Cloud perso</h3>
+                <article class="card" data-reveal>
+                    <span class="tag">☁️ Stockage</span>
+                    <h3 class="h3">Cloud perso</h3>
                     <p>Je préfère garder mes données chez moi.</p>
                 </article>
-
-                <article class="service card">
-                    <h3>🎵 Musique</h3>
+                <article class="card" data-reveal style="--d:1">
+                    <span class="tag">🎵 Audio</span>
+                    <h3 class="h3">Musique</h3>
                     <p>Bibliothèque en qualité <strong>FLAC</strong>, accessible partout.</p>
                 </article>
-
-                <article class="service card">
-                    <h3>🖥️ Machines virtuelles</h3>
+                <article class="card" data-reveal style="--d:2">
+                    <span class="tag">🖥️ Virtualisation</span>
+                    <h3 class="h3">Machines virtuelles</h3>
                     <p>Pour certains services et pour expérimenter librement.</p>
                 </article>
             </div>
         </section>
-
-        <p style="text-align:center;margin-top:var(--space,20px);">
-            <a href="/" class="btn">⬅ Retour à l’accueil</a>
-        </p>
     </main>
-
-    <!-- Footer -->
-    <div id="footer"></div>
-    <script src="/assets/js/footer-loader.js" defer></script>
-
-    <!-- Lang switch -->
-    <script src="/assets/js/lang.js" defer></script>
-
-    <script>
-        // Révèle la page une fois chargée (anti-flash)
-        window.addEventListener("load", () => { document.body.style.visibility = "visible"; });
-    </script>
 </body>
 </html>

@@ -1,98 +1,77 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>
-        // Meta spécifiques à la page Portfolio
-        window.PAGE = {
-            title: "Portfolio — Yonagi",
-            desc: "Quelques projets que j’ai réalisés : site perso, AR/VR, moule d’injection, NAS, et plus.",
-            path: "/portfolio/"
-        };
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Portfolio — Yonagi</title>
+    <meta name="description" content="Quelques projets que j’ai réalisés : machines en 3D, moule d’injection plastique, NAS maison, ce site, et plus.">
+    <link rel="canonical" href="https://yonagi.fr/portfolio/">
 
-        // Injecte le head commun depuis /assets/html/
-        (async () => {
-            const res = await fetch('/assets/html/head-meta.html');
-            let html = await res.text();
-            const P = window.PAGE || {};
-            html = html
-                .replaceAll('<!--PAGE_TITLE-->', P.title || 'Yonagi — Site')
-                .replaceAll('<!--PAGE_DESC-->', P.desc || 'Portfolio et projets de Yonagi.')
-                .replaceAll('<!--PAGE_PATH-->', P.path || '/');
-            document.head.insertAdjacentHTML('afterbegin', html);
-        })();
-    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yonagi">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="Portfolio — Yonagi">
+    <meta property="og:description" content="Quelques projets que j’ai réalisés : machines en 3D, moule d’injection plastique, NAS maison, ce site, et plus.">
+    <meta property="og:url" content="https://yonagi.fr/portfolio/">
+    <meta property="og:image" content="https://yonagi.fr/assets/img/logo/og.webp">
+    <meta property="og:image:alt" content="Portrait de Yonagi">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_Yonagi">
 
-    <!-- Anti-flash (optionnel) -->
-    <style>
-        body {
-            visibility: hidden
-        }
-    </style>
+    <link rel="icon" type="image/webp" href="/assets/img/logo/favicon.webp">
+    <meta name="theme-color" content="#07060f">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&text=%E5%A4%9C%E5%87%AA&display=swap">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>document.documentElement.classList.add('js')</script>
+    <script defer src="/assets/js/site.js"></script>
 </head>
-
-<body class="with-sidebar">
-    <!-- Sidebar -->
-    <div id="sidebar"></div>
-    <script src="/assets/js/sidebar-loader.js" defer></script>
-
-    <main>
-        <header class="container hero">
-            <div>
-                <h1>Mon portfolio</h1>
-                <p class="muted">Voici quelques projets que j’ai réalisés 💻</p>
-            </div>
+<body>
+    <a class="sr-only" href="#contenu">Aller au contenu</a>
+    <main id="contenu">
+        <header class="page-hero wrap">
+            <p class="eyebrow">Portfolio</p>
+            <h1 class="display">Quelques projets<br>que j’ai <em>réalisés</em></h1>
+            <p class="lede">Du plus sérieux au plus existentiel 💻</p>
         </header>
 
-        <!-- Grille de projets -->
-        <section class="grid" style="margin-top:30px;">
-            <!-- Projet 1 -->
-            <article class="card">
-                <h3>Projet 1 : Vivre</h3>
-                <p>C’est pas facile tous les jours.</p>
-            </article>
-
-            <!-- Projet 2 -->
-            <article class="card">
-                <h3>Projet 2 : Site personnel</h3>
-                <p>Ce site que tu es en train de lire ! Fait à la main et avec amour (et ChatGPT…) 💖</p>
-            </article>
-
-            <!-- Projet 3 avec lien vers le viewer -->
-            <article class="card">
-                <h3>Projet 3 : Alternance / CDD</h3>
-                <p>Réalisation de multiples machines en 3D afin d’améliorer la réussite étudiante dans ma région.</p>
-                <p><a href="/model-viewer/">🌀 Voir en 3D</a></p>
-            </article>
-
-            <!-- Projet 4 avec lien -->
-            <article class="card">
-                <h3>Projet 4 : Moule d’injection plastique</h3>
-                <p>Réalisation complète d’un moule d’injection plastique pour des éprouvettes de traction.</p>
-                <p><a href="/moule/">🌀 Voir la page</a></p>
-            </article>
-
-            <!-- Projet 5 avec lien -->
-            <article class="card">
-                <h3>Projet 5 : Mon NAS / Serveur</h3>
-                <p>Un petit serveur me permettant de faire pas mal d’économies !</p>
-                <p><a href="/nas/">💽 Voir la page</a></p>
-            </article>
+        <section class="section--tight wrap">
+            <ol class="rows">
+                <li data-reveal><div class="row">
+                    <span class="row__n">01</span>
+                    <h2 class="row__t">Vivre</h2>
+                    <p class="row__d">C’est pas facile tous les jours.</p>
+                    <span class="row__go muted">En cours…</span>
+                </div></li>
+                <li data-reveal><a class="row" href="/">
+                    <span class="row__n">02</span>
+                    <h2 class="row__t">Ce site</h2>
+                    <p class="row__d">Celui que tu es en train de lire ! Fait avec amour, zéro framework (et un coup de main de l’IA…) 💖</p>
+                    <span class="row__go">Accueil ↗</span>
+                </a></li>
+                <li data-reveal><a class="row" href="/model-viewer/">
+                    <span class="row__n">03</span>
+                    <h2 class="row__t">Machines en 3D</h2>
+                    <p class="row__d">Alternance / CDD — réalisation de multiples machines en 3D afin d’améliorer la réussite étudiante dans ma région.</p>
+                    <span class="row__go">Voir en 3D ↗</span>
+                </a></li>
+                <li data-reveal><a class="row" href="/moule/">
+                    <span class="row__n">04</span>
+                    <h2 class="row__t">Moule d’injection</h2>
+                    <p class="row__d">Réalisation complète d’un moule d’injection plastique pour des éprouvettes de traction.</p>
+                    <span class="row__go">Voir le projet ↗</span>
+                </a></li>
+                <li data-reveal><a class="row" href="/nas/">
+                    <span class="row__n">05</span>
+                    <h2 class="row__t">Mon NAS</h2>
+                    <p class="row__d">Un petit serveur maison qui me permet de faire pas mal d’économies !</p>
+                    <span class="row__go">Voir la page ↗</span>
+                </a></li>
+            </ol>
         </section>
-
-        <!-- Retour -->
-        <p style="margin-top:40px;"><a href="/">⬅ Retour à l’accueil</a></p>
     </main>
-
-    <!-- Footer -->
-    <div id="footer"></div>
-    <script src="/assets/js/footer-loader.js" defer></script>
-
-    <!-- Lang switch -->
-    <script src="/assets/js/lang.js" defer></script>
-
-    <script>
-        // Révéler la page une fois chargée
-        window.addEventListener('load', () => { document.body.style.visibility = 'visible'; });
-    </script>
 </body>
 </html>
